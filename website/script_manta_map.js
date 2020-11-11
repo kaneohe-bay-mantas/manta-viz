@@ -1,35 +1,57 @@
-function coordinate_parser(string){
+function coordinate_parser(string) {
   data = string.split(/[°'"\s]/);
-  ret = Number(data[0]) + Number(data[1]/60.0) + Number(data[2]/3600.0)
-  if(data[4] == 'W'){
+  ret = Number(data[0]) + Number(data[1] / 60.0) + Number(data[2] / 3600.0)
+  if (data[4] == 'W') {
     ret *= -1
   }
   return ret
 }
 
-d3.csv('../data/clean_data.csv', function(data) {
+d3.csv('../data/clean_data.csv', function (data) {
   circles = [];
 
   coordinates = []
 
-  for(var i =0; i < data.length; i ++){
-    if(data[i].Group_Size == 0){continue;}
+  for (var i = 0; i < data.length; i++) {
+    num = Number(data[i].Group_Size);
+    if (num == 0) { continue; }
     lon = coordinate_parser(data[i].Longitude);
     lat = coordinate_parser(data[i].Latitude);
-    coordinates.push([lat, lon, 10]);
-  //   circle = L.circle([lat, lon], {
-  //     weight: 0.5,
-  //     color: 'black',
-  //     fillcolor: 'yellow',
-  //     fillOpacity: 1,
-  //     radius: 8
-  //   });
-  //   circles.push(circle);
-   }
-  // for (i=0; i<circles.length; i++){
-  //   circles[i].addTo(mymap);
-  // }
-   var heat = L.heatLayer(coordinates, {radius:25}).addTo(mymap)
+    coordinates.push([lat, lon, num]);
+    circle = L.circle([lat, lon], {
+      weight: 0.5,
+      color: 'blue',
+      fillcolor: 'yellow',
+      fillOpacity: 1,
+      radius: 8
+    });
+
+
+    
+    // circle.on('mouseover', function (e) {
+    //   this.openPopup();
+    // });
+    // circle.on('mouseout', function (e) {
+    //   this.closePopup();
+    // });
+
+
+    popupContent = document.createElement("img");
+    popupContent.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Stack_Exchange_logo_and_wordmark.svg/375px-Stack_Exchange_logo_and_wordmark.svg.png";
+    popupContent.onload = function() {
+      circle.openPopup();
+    }
+    circle.bindPopup(popupContent, {
+      maxWidth: "auto"
+    });
+    circles.push(circle);
+  }//iterate through each lat/long
+
+
+  for (i = 0; i < circles.length; i++) {
+    circles[i].addTo(mymap);
+  }
+  var heat = L.heatLayer(coordinates, { radius: 25 }).addTo(mymap)
 })
 
 
