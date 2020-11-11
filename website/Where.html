@@ -9,7 +9,12 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
 </head>
 
 <body>
@@ -41,6 +46,7 @@
                     </div>
 
                     <!--template-->
+
                     <div class="ui grid container" id='clark'>
                         <div class="ui row">
                             <div class="ui card" style="width:100%">
@@ -56,6 +62,10 @@
                                 </div>
                             </div>
                         </div>
+                        <div class='ui row'>
+                            <div id='map_mantas' class='ui centered column'
+                                style="height:500px; width: 100%; background-color: black;"></div>
+                        </div>>
                     </div>
 
 
@@ -76,7 +86,7 @@
 
 
 
-
+    <script src="script_manta_map.js"></script>
 </body>
 
 </html>
