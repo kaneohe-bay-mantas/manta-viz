@@ -7,6 +7,28 @@ function coordinate_parser(string) {
   return ret
 }
 
+function createPopup(dataPoint){
+  //add image
+  str = '<div><img src = '
+  str += 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Stack_Exchange_logo_and_wordmark.svg/375px-Stack_Exchange_logo_and_wordmark.svg.png'
+  str += '><hr>';
+  str += '<div>DATE: ' + dataPoint.Mo + '/' + dataPoint.Da + '/' + dataPoint.Yr + '<br>';
+  str += 'Latitude: ' + dataPoint.Latitude + '<br>';
+  str += 'Longitude: ' + dataPoint.Longitude + '<br>';
+  str += 'Time: '
+  time = Number(dataPoint.Time)
+  hour = Math.floor(time)
+  console.log("round ", time," and get ", hour)
+  min = Math.round(6000 * (time - hour))/100
+  if(hour > 12){hour -= 12};
+  str += hour.toString() + ':' + min.toString()
+  str += time > 12 ? 'PM' : 'AM';
+  str += '<br>Group Size: ' + dataPoint.Group_Size;
+  str += '</div>'
+
+  return str;
+}
+
 d3.csv('../data/clean_data.csv', function (data) {
   circles = [];
 
@@ -23,7 +45,7 @@ d3.csv('../data/clean_data.csv', function (data) {
       color: 'blue',
       fillcolor: 'yellow',
       fillOpacity: 1,
-      radius: 8
+      radius: 16
     });
 
 
@@ -37,10 +59,10 @@ d3.csv('../data/clean_data.csv', function (data) {
 
 
     popupContent = document.createElement("img");
-    popupContent.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Stack_Exchange_logo_and_wordmark.svg/375px-Stack_Exchange_logo_and_wordmark.svg.png";
-    popupContent.onload = function() {
-      circle.openPopup();
-    }
+    popupContent = createPopup(data[i]);
+    //popupContent = "<div>HELLO WORLD<img src='https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Stack_Exchange_logo_and_wordmark.svg/375px-Stack_Exchange_logo_and_wordmark.svg.png'></div>"
+
+    
     circle.bindPopup(popupContent, {
       maxWidth: "auto"
     });
