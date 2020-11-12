@@ -11,6 +11,7 @@ function createPopup(dataPoint){
   //add image
   str = '<div><img src = '
   str += 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Stack_Exchange_logo_and_wordmark.svg/375px-Stack_Exchange_logo_and_wordmark.svg.png'
+  console.log('images/mantapics/' + dataPoint.ID.toString() + '.jpg')
   str += '><hr>';
   str += '<div>DATE: ' + dataPoint.Mo + '/' + dataPoint.Da + '/' + dataPoint.Yr + '<br>';
   str += 'Latitude: ' + dataPoint.Latitude + '<br>';
@@ -18,7 +19,6 @@ function createPopup(dataPoint){
   str += 'Time: '
   time = Number(dataPoint.Time)
   hour = Math.floor(time)
-  console.log("round ", time," and get ", hour)
   min = Math.round(6000 * (time - hour))/100
   if(hour > 12){hour -= 12};
   str += hour.toString() + ':' + min.toString()
