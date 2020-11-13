@@ -9,6 +9,15 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- heat map? -->
+    <script src="leaflet-heat.js"></script>
 
 </head>
 
@@ -19,13 +28,14 @@
         <br>
         <div class="ui inverted container">
             <div class="ui inverted segment">
-                <h1 class='ui centered header'>Mantas</h1>
-                <div class="ui inverted secondary pointing five item menu">
-                    <a class="item" href="index.html" id="font">HOME</a>
-                    <a class="item" href="About.html" id="font">About Mantas</a>
+                <h1 class='ui centered header'>The Mantas of Kaneohe Bay</h1>
+                <div class="ui inverted secondary pointing six item menu">
+                    <a class="item" href="index.html" id="font">Home</a>
+                    <a class="item" href="What.html" id="font">What</a>
                     <a class="active item" href="Where.html" id="font">Where</a>
-                    <a class="item" href="Who.html" id="font">Who are they</a>
                     <a class="item" href="When.html" id="font">When</a>
+                    <a class="item" href="Who.html" id="font">Who</a>
+                    <a class="item" href="Why.html" id="font">Why</a>
                 </div>
             </div>
         </div>
@@ -38,25 +48,41 @@
             <div class="ui ten wide column">
                 <div class="ui three column grid container">
                     <div class="ui centered row">
-                        <h1 class="ui header" id="font" style="color:white">Where do they live?</h1>
+                        <h1 class="ui header" id="font" style="color:black">Where are they?</h1>
                     </div>
 
                     <!--template-->
+
                     <div class="ui grid container" id='clark'>
                         <div class="ui row">
                             <div class="ui card" style="width:100%">
-                                <div class="content">
+                                <!-- <div class="content">
                                     <h1 class="ui header" id="font">Heat maps, polar plots</h1>
-                                </div>
+                                </div> -->
                                 <div class="content">
 
-                                    <h4 class="ui sub header" id="font">Title</h4>
+                                    <h4 class="ui sub header" id="font">Manta sighting locations</h4>
                                     <p id='font'>
-                                        Place holder
+                                        Let's explore the locations of Mantas observed.<br>
+                                        In the map below, you can see different manta sighting locations by blue dots.<br>
+                                        Each observation came with different numbers of mantas, which is reflected
+                                        by the heatmap coloring.<br>
+                                        Click on the dots to see individual pictures taken at each spots along with more specific information.
+
                                     </p>
                                 </div>
+                                <div class='content'>
+                                    <div id='map_mantas' style="height:500px; width: 100%; background-color: black;">
+                                    </div>
+                                </div>
+
+                                <div class='ui content'></div>
                             </div>
                         </div>
+                        <!-- <div class='ui row'>
+                            <div id='map_mantas' class='ui centered column'
+                                style="height:500px; width: 80%; background-color: black;"></div>
+                        </div>> -->
                     </div>
 
 
@@ -67,7 +93,7 @@
 
         <div class="ui fotter container">
             <hr>
-            <h5 class="ui centered header" id="font" style="color:white">University of Hawaii at Manoa ICS484 /
+            <h5 class="ui centered header" id="font" style="color:black">University of Hawaii at Manoa ICS484 /
                 ACM484 Group Project</h5>
             <br>
         </div>
@@ -77,7 +103,7 @@
 
 
 
-
+    <script src="script_manta_map.js"></script>
 </body>
 
 </html>
