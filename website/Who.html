@@ -10,6 +10,8 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 
 <body>
@@ -54,6 +56,7 @@
                                     <p id='font'>
                                         Place holder
                                     </p>
+                                    <div id="population" style="width:100%">
                                 </div>
                             </div>
                         </div>
@@ -77,5 +80,51 @@
 
 
 </body>
+
+<script>
+    Plotly.d3.csv('../data/ids.csv', function (err, rows) {
+        function unpack(rows, key) {
+            return rows.map(function (row) { return row[key]; });
+        }
+
+        var sighting = unpack(rows, 'Overall Sighting');
+        var manta_id = unpack(rows, 'Manta ID')
+        var new_manta = unpack(rows, 'New Manta')
+        var new_manta_count = 0
+        var new_mantas = []
+        for (i in new_manta) {
+            if(new_manta[i] == 'T') {
+                new_manta_count += 1
+            }
+            new_mantas[i]=new_manta_count
+        }
+
+        var population_data = [
+            {
+                x: sighting,
+                y: new_mantas,
+                mode: 'markers',
+                marker: {
+                    color: '#26669E',
+                    size: 10
+                }
+            }
+        ]
+
+        var population_layout = {
+            title: 'Population Estimation',
+            xaxis: {
+                title: '# of Manta Sightings'
+            },
+            yaxis: {
+                title: '# of Unique Mantas'
+            }
+        }
+
+        Plotly.newPlot('population', population_data, population_layout);
+
+    })
+
+</script>
 
 </html>
