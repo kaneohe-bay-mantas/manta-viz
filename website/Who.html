@@ -87,32 +87,63 @@
             return rows.map(function (row) { return row[key]; });
         }
 
-        var sighting = unpack(rows, 'Overall Sighting');
-        var manta_id = unpack(rows, 'Manta ID')
-        var new_manta = unpack(rows, 'New Manta')
-        var new_manta_count = 0
-        var new_mantas = []
+        var sighting = unpack(rows, 'Overall Sighting').map(x=>+x);
+        var manta_id = unpack(rows, 'Manta ID').map(x=>+x);
+        var new_manta = unpack(rows, 'New Manta');
+        var new_manta_count = 0;
+        var new_mantas = [];
         for (i in new_manta) {
             if(new_manta[i] == 'T') {
-                new_manta_count += 1
+                new_manta_count += 1;
             }
-            new_mantas[i]=new_manta_count
+            new_mantas[i]=new_manta_count;
+        };
+
+        var a = 23.94;
+        var b = -0.05;
+
+        var pred_new_mantas = [];
+        for(i in sighting) {
+            pred_new_mantas[i] = a * (1 - Math.exp(b * sighting[i]));
         }
 
-        var population_data = [
-            {
-                x: sighting,
-                y: new_mantas,
-                mode: 'markers',
-                marker: {
-                    color: '#26669E',
-                    size: 10
-                }
+        var sightings = {
+            x: sighting,
+            y: new_mantas,
+            mode: 'markers',
+            name: 'Manta Sighting',
+            marker: {
+                color: '#26669E',
+                size: 10
             }
-        ]
+        };
+
+        var asymptote = {
+            x: [0, sighting.length],
+            y: [a, a],
+            mode: 'lines',
+            name: 'Population Estimate',
+            line: {
+                color: '#EB8F57',
+                dash: 'dash',
+                width: 4
+            }
+        };
+
+        var fit = {
+            x: sighting,
+            y: pred_new_mantas,
+            mode: 'lines',
+            name: 'Data Fit',
+            line: {
+                color: '8EC1ED',
+                width: 4
+            }
+        }
+
+        var data = [sightings, asymptote, fit];
 
         var population_layout = {
-            title: 'Population Estimation',
             xaxis: {
                 title: '# of Manta Sightings'
             },
@@ -121,7 +152,7 @@
             }
         }
 
-        Plotly.newPlot('population', population_data, population_layout);
+        Plotly.newPlot('population', data, population_layout);
 
     })
 
