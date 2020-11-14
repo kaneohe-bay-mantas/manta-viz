@@ -101,10 +101,12 @@
 
         var a = 23.94;
         var b = -0.05;
+        var x_exp = 1.3;
 
         var pred_new_mantas = [];
-        for(i in sighting) {
-            pred_new_mantas[i] = a * (1 - Math.exp(b * sighting[i]));
+        var pred_x = [...Array(Math.ceil(sighting.length * x_exp)).keys()]
+        for(i in pred_x) {
+            pred_new_mantas[i] = a * (1 - Math.exp(b * pred_x[i]));
         }
 
         var sightings = {
@@ -114,12 +116,12 @@
             name: 'Manta Sighting',
             marker: {
                 color: '#26669E',
-                size: 10
+                size: 7
             }
         };
 
         var asymptote = {
-            x: [0, sighting.length],
+            x: [0, sighting.length * x_exp],
             y: [a, a],
             mode: 'lines',
             name: 'Population Estimate',
@@ -127,29 +129,57 @@
                 color: '#EB8F57',
                 dash: 'dash',
                 width: 4
-            }
+            },
+            hoverinfo: 'skip'
         };
 
         var fit = {
-            x: sighting,
+            x: pred_x,
             y: pred_new_mantas,
             mode: 'lines',
             name: 'Data Fit',
             line: {
                 color: '8EC1ED',
                 width: 4
-            }
+            },
+            hoverinfo: 'skip'
         }
 
-        var data = [sightings, asymptote, fit];
+        var data = [fit, sightings, asymptote];
 
         var population_layout = {
+            margin: {
+                l: 50,
+                r: 50,
+                b: 50,
+                t: 50,
+                pad: 4
+            },
             xaxis: {
-                title: '# of Manta Sightings'
+                title: '# of Manta Sightings',
+                range: [0, sighting.length * x_exp]
             },
             yaxis: {
-                title: '# of Unique Mantas'
-            }
+                title: '# of Unique Mantas',
+                range: [0, a * 1.1]
+            },
+            showlegend: false,
+            annotations: [
+                {
+                    x: sighting.length * x_exp,
+                    y: a * 1.05,
+                    text: "Population Estimate: " + Math.round(a * 10) / 10,
+                    showarrow: false,
+                    xanchor: "right"
+                },
+                {
+                    x: sighting.length * x_exp * 0.98,
+                    y: a * (1 - Math.exp(b * sighting.length * x_exp * 0.98)),
+                    text: "Resighting Curve",
+                    ax: 0,
+                    ay: 50
+                }
+            ]
         }
 
         Plotly.newPlot('population', data, population_layout);
