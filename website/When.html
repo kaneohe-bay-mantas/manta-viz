@@ -9,6 +9,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    
 
 </head>
 
@@ -55,6 +57,8 @@
                                     <p id='font'>
                                         Place holder
                                     </p>
+                                    <div id="lunar" style="width: 49%; float: left;"></div>
+                                    <div id="tidal" style="width: 49%; float: left;"></div>
                                 </div>
                             </div>
                         </div>
@@ -80,5 +84,157 @@
 
 
 </body>
+
+<script>
+    Plotly.d3.csv('/data/clean_data.csv', function (err, rows) {
+        function unpack(rows, key) {
+            return rows.map(function (row) { return row[key]; });
+        }
+        console.log(rows);
+
+        var days = unpack(rows, 'lunar_deg');
+        for (i in days) {
+            days[i] = Math.round(days[i] * 28 / 360)
+        }
+        console.log(days)
+
+        var lunar_data = [
+            {
+                type: "scatterpolar",
+                name: "angular categories",
+                r: unpack(rows, 'Group_Size'),
+                theta: days,
+                mode: "markers",
+                name: "Group Size",
+                marker: {
+                    color: "#46CF91",
+                    size: 15,
+                    line: {
+                        color: "white"
+                    },
+                    opacity: 0.7
+                },
+                //cliponaxis: false,
+                hovertext: "test",
+                hovertemplate: "%{r} mantas, \n <extra>%{theta} days since the full moon</extra>"
+            }
+        ]
+
+        var lunar_layout = {
+            title: "by Lunar Day",
+            font: {
+                size: 15
+            },
+            showlegend: false,
+            polar: {
+                bgcolor: "rgb(223, 223, 223)",
+                angularaxis: {
+                    type: "category",
+                    categoryorder: "array",
+                    categoryarray: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
+                    tickwidth: 2,
+                    tickfont: {
+                        size: 14
+                    },
+                    ticktext: [0, 7, 14, 21],
+                    linewidth: 3,
+                    layer: "below traces",
+                    title: "Lunar Day",
+                    gridcolor: "#8EC1ED"
+
+                },
+                radialaxis: {
+                    side: "counterclockwise",
+                    showline: true,
+                    linewidth: 2,
+                    tickwidth: 2,
+                    tickfont: {
+                        color: "#437860",
+                        size: 12
+                    },
+                    gridcolor: "white",
+                    gridwidth: 2,
+                    title: "Group Size",
+                    titlefont: {
+                        color: '#437860',
+                        size: 12
+                    }
+                }
+            },
+            paper_bgcolor: "rgb(223, 223, 223)",
+        }
+        Plotly.newPlot('lunar', lunar_data, lunar_layout);
+
+        /////// Plot 2: tide data ///////////////////////////////
+        var tidal_data = [
+            {
+                type: "scatterpolar",
+                name: "angular categories",
+                r: unpack(rows, 'Group_Size'),
+                theta: unpack(rows, 'Tidal_phase'),
+                mode: "markers",
+                name: "Group Size",
+                marker: {
+                    color: "#8EC1ED",
+                    size: 15,
+                    line: {
+                        color: "white"
+                    },
+                    opacity: 0.7
+                },
+                //cliponaxis: false,
+                hovertext: "test",
+                hovertemplate: "%{r} mantas, \n <extra>%{theta} days since the full moon</extra>"
+            }
+        ]
+
+        var tidal_layout = {
+            title: "by Tidal Phase",
+            font: {
+                size: 14
+            },
+            showlegend: false,
+            polar: {
+                bgcolor: "rgb(223, 223, 223)",
+                angularaxis: {
+                    //type: "category",
+                    //categoryorder: "array",
+                    //categoryarray: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28],
+                    tickwidth: 2,
+                    tickfont: {
+                        size: 14
+                    },
+                    linewidth: 3,
+                    layer: "below traces",
+                    title: "tidal Day",
+                    gridcolor: "#8EC1ED"
+
+                },
+                radialaxis: {
+                    side: "counterclockwise",
+                    showline: true,
+                    linewidth: 2,
+                    tickwidth: 2,
+                    tickfont: {
+                        color: "#437860",
+                        size: 12
+                    },
+                    gridcolor: "white",
+                    gridwidth: 2,
+                    title: "Group Size",
+                    titlefont: {
+                        color: '#437860',
+                        size: 12
+                    }
+                }
+            },
+            paper_bgcolor: "rgb(223, 223, 223)",
+        }
+
+        Plotly.newPlot('tidal', tidal_data, tidal_layout);
+
+    })
+
+</script>
 
 </html>
