@@ -29,7 +29,7 @@ function createPopup(dataPoint) {
   return str;
 }
 
-d3.csv('../data/clean_data.csv', function (data) {
+d3.csv('./data/clean_data.csv', function (data) {
   circles = [];
 
   coordinates = []

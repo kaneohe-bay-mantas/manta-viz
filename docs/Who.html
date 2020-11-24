@@ -87,7 +87,7 @@
 </body>
 
 <script>
-    Plotly.d3.csv('../data/ids.csv', function (err, rows) {
+    Plotly.d3.csv('./data/ids.csv', function (err, rows) {
         function unpack(rows, key) {
             return rows.map(function (row) { return row[key]; });
         }
