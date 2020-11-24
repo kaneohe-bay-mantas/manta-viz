@@ -86,7 +86,7 @@
 </body>
 
 <script>
-    Plotly.d3.csv('https://github.com/kaneohe-bay-mantas/manta-viz/blob/master/data/clean_data.csv', function (err, rows) {
+    Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
         function unpack(rows, key) {
             return rows.map(function (row) { return row[key]; });
         }
