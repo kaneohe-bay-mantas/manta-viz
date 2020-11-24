@@ -13,6 +13,10 @@
       font-family: 'Roboto', serif;
   */
 }
+/*Opacity for the heat map*/
+.leaflet-heatmap-layer{
+  opacity: .7;
+}
 
 body #fonts {
 font-family: var(--myFont), sans-serif;

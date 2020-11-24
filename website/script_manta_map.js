@@ -10,9 +10,10 @@ function coordinate_parser(string) {
 function createPopup(dataPoint){
   //add image
   str = '<div><img src = '
-  str += 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Stack_Exchange_logo_and_wordmark.svg/375px-Stack_Exchange_logo_and_wordmark.svg.png'
+  //str += 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Stack_Exchange_logo_and_wordmark.svg/375px-Stack_Exchange_logo_and_wordmark.svg.png'
+  str += 'images/mantapics/' + dataPoint.ID.toString() + '.jpg';
   console.log('images/mantapics/' + dataPoint.ID.toString() + '.jpg')
-  str += '><hr>';
+  str += ' height="200"><hr>';
   str += '<div>DATE: ' + dataPoint.Mo + '/' + dataPoint.Da + '/' + dataPoint.Yr + '<br>';
   str += 'Latitude: ' + dataPoint.Latitude + '<br>';
   str += 'Longitude: ' + dataPoint.Longitude + '<br>';
@@ -41,10 +42,10 @@ d3.csv('../data/clean_data.csv', function (data) {
     lat = coordinate_parser(data[i].Latitude);
     coordinates.push([lat, lon, num]);
     circle = L.circle([lat, lon], {
-      weight: 0.5,
-      color: 'blue',
+      weight: 0.2,
+      color: 'white',
       fillcolor: 'yellow',
-      fillOpacity: 1,
+      fillOpacity: 0.5,
       radius: 16
     });
 
@@ -76,14 +77,16 @@ d3.csv('../data/clean_data.csv', function (data) {
   var heat = L.heatLayer(coordinates, { radius: 25 }).addTo(mymap)
 })
 
-
 var mymap = L.map('map_mantas').setView([21.48, -157.82], 14.);;
-L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-  maxZoom: 20,
-  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-    '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-    'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-  id: 'mapbox/light-v9',
-  tileSize: 512,
-  zoomOffset: -1
+// L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+//   maxZoom: 20,
+//   attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+//     '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+//     'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+//   id: 'mapbox/WorldImagery',
+//   tileSize: 512,
+//   zoomOffset: -1
+// }).addTo(mymap);
+L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(mymap);
