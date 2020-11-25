@@ -46,7 +46,7 @@
                     <!--template-->
                     <div class="ui grid container" id='clark'>
                         <div class="ui row">
-                            <div class="ui card" style="height:1000px; width:100%">
+                            <div class="ui card" style="width:100%">
                                 <div class="content">
                                     <p id='font'>
                                         Each manta has a unique pattern of black spots on its white belly, so we can identify individual mantas by these patterns. However, since this requires a photo of the manta's belly, relatively few photos have been collected. In the plot below, each point represents one belly photo that has identified to a specific manta. Click a point to see the corresponding belly photo, as well as a reference photo for the individual manta that has been identified from the photo. In some cases, these photos may be the same because the manta has only been spotted once or the belly photo is the best one for that individual.
@@ -191,7 +191,7 @@
             ]
         }
 
-        Plotly.newPlot('population', data, population_layout);
+        Plotly.newPlot('population', data, population_layout, {displayModeBar: false});
 
     })
 
