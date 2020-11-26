@@ -75,13 +75,9 @@ body {
   border: none;
 }
 
-
-
-
-
-
-
-
+.ui.inverted.segment {
+  background-color: #437860;
+}
 
 .ui.container.borderless.topmenu.menu {
   background-color: white;
