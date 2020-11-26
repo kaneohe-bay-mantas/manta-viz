@@ -46,21 +46,42 @@
                     <!--template-->
                     <div class="ui grid container" id='clark'>
                         <div class="ui row">
-                            <div class="ui card" style="height:1000px; width:100%">
+                            <div class="ui card" style="width:100%">
                                 <div class="content">
                                     <p id='font'>
-                                        Each manta has a unique pattern of black spots on its white belly, so we can identify individual mantas by these patterns. However, since this requires a photo of the manta's belly, relatively few photos have been collected. In the plot below, each point represents one belly photo that has identified to a specific manta. Click a point to see the corresponding belly photo, as well as a reference photo for the individual manta that has been identified from the photo. In some cases, these photos may be the same because the manta has only been spotted once or the belly photo is the best one for that individual.
+                                        Each manta has a unique pattern of black spots on its white belly, so we can
+                                        identify individual mantas by these patterns. However, since this requires a
+                                        photo of the manta's belly, relatively few photos have been collected. In the
+                                        plot below, each point represents one belly photo that has identified to a
+                                        specific manta. Click a point to see the corresponding belly photo, as well as a
+                                        reference photo for the individual manta that has been identified from the
+                                        photo. In some cases, these photos may be the same because the manta has only
+                                        been spotted once or the belly photo is the best one for that individual.
                                         <br>
                                         <br>
-                                        Despite not seeing every manta, we can estimate the total population of mantas based on the rate at which we encounter new mantas and resight old mantas. Basically, if we see the same mantas over and over it means that there are few mantas, and if most of the mantas we see are new it means that there are many mantas. We estimate the manta population by fitting a curve to the observation points and seeing what value that curve tends toward as the number of manta sightings increases.
+                                        Despite not seeing every manta, we can estimate the total population of mantas
+                                        based on the rate at which we encounter new mantas and resight old mantas.
+                                        Basically, if we see the same mantas over and over it means that there are few
+                                        mantas, and if most of the mantas we see are new it means that there are many
+                                        mantas. We estimate the manta population by fitting a curve to the observation
+                                        points and seeing what value that curve tends toward as the number of manta
+                                        sightings increases.
                                     </p>
-                                    <div id="population" style="height:400px; width:100%">
-                                    <p id = 'font'>
-                                    	<br>
-                                    	The population of mantas that use Kaneohe Bay seems to be relatively small, at around 24 individuals. Previous studies have shown that mantas rarely move between islands within Hawaii, so given that Kaneohe Bay is one of the prime areas for mantas on Oahu this means that the entire Oahu population may be less than 100 individuals.
-                                    	<br>
-                                    	<br>
-                                    	Mantas grow very slowly, taking 6-8 years for males and 8-10 years for females to reach sexual maturity. In addition, females only give birth to one pup at a time, so manta population are particularly slow to replenish and prone to collapse. Given that the population on Oahu is already small, this means that we must take great care to protect the mantas that remain.
+                                    <div id="population" style="height:400px; width:100%"></div>
+                                    <p id='font'>
+                                        <br>
+                                        The population of mantas that use Kaneohe Bay seems to be relatively small, at
+                                        around 24 individuals. Previous studies have shown that mantas rarely move
+                                        between islands within Hawaii, so given that Kaneohe Bay is one of the prime
+                                        areas for mantas on Oahu this means that the entire Oahu population may be less
+                                        than 100 individuals.
+                                        <br>
+                                        <br>
+                                        Mantas grow very slowly, taking 6-8 years for males and 8-10 years for females
+                                        to reach sexual maturity. In addition, females only give birth to one pup at a
+                                        time, so manta population are particularly slow to replenish and prone to
+                                        collapse. Given that the population on Oahu is already small, this means that we
+                                        must take great care to protect the mantas that remain.
                                     </p>
                                 </div>
                             </div>
@@ -68,16 +89,17 @@
                     </div>
                 </div>
             </div>
-            <div class="ui three wide column"></div>
         </div>
+        <div class="ui three wide column"></div>
+    </div>
 
 
-        <div class="ui fotter container">
-            <hr>
-            <h5 class="ui centered header" id="font" style="color:black">University of Hawaii at Manoa ICS484 / ACM484
-                Group Project</h5>
-            <br>
-        </div>
+    <div class="ui fotter container">
+        <hr>
+        <h5 class="ui centered header" id="font" style="color:black">University of Hawaii at Manoa ICS484 / ACM484
+            Group Project</h5>
+        <br>
+    </div>
     </div>
 
 
@@ -92,16 +114,16 @@
             return rows.map(function (row) { return row[key]; });
         }
 
-        var sighting = unpack(rows, 'Overall Sighting').map(x=>+x);
-        var manta_id = unpack(rows, 'Manta ID').map(x=>+x);
+        var sighting = unpack(rows, 'Overall Sighting').map(x => +x);
+        var manta_id = unpack(rows, 'Manta ID').map(x => +x);
         var new_manta = unpack(rows, 'New Manta');
         var new_manta_count = 0;
         var new_mantas = [];
         for (i in new_manta) {
-            if(new_manta[i] == 'T') {
+            if (new_manta[i] == 'T') {
                 new_manta_count += 1;
             }
-            new_mantas[i]=new_manta_count;
+            new_mantas[i] = new_manta_count;
         };
 
         var a = 23.94;
@@ -111,7 +133,7 @@
 
         var pred_new_mantas = [];
         var pred_x = [...Array(Math.ceil(sighting.length * x_exp)).keys()]
-        for(i in pred_x) {
+        for (i in pred_x) {
             pred_new_mantas[i] = a * (1 - Math.exp(b * pred_x[i]));
         }
 
@@ -126,7 +148,7 @@
             },
             text: manta_id,
             hovertemplate: 'Manta Sighting: %{x} <br>Manta ID: %{text}<extra></extra>'
-            <!-- Display /images/mantapics/x.jpg and /images/referencepics/text.jpg -->
+            //<!-- Display /images/mantapics/x.jpg and /images/referencepics/text.jpg -->
         };
 
         var asymptote = {
@@ -191,7 +213,7 @@
             ]
         }
 
-        Plotly.newPlot('population', data, population_layout);
+        Plotly.newPlot('population', data, population_layout, { displayModeBar: false });
 
     })
 
