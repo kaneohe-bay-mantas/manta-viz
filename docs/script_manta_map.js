@@ -6,28 +6,6 @@ function coordinate_parser(string) {
   }
   return ret
 }
-//INITIAL BULIT FOR THE MAP
-function createPopup(dataPoint) {
-  //add image
-  str = '<div><img src = '
-  //str += 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Stack_Exchange_logo_and_wordmark.svg/375px-Stack_Exchange_logo_and_wordmark.svg.png'
-  str += 'images/mantapics/' + dataPoint.ID.toString() + '.jpg';
-  str += ' height="200"><hr>';
-  str += '<div>DATE: ' + dataPoint.Mo + '/' + dataPoint.Da + '/' + dataPoint.Yr + '<br>';
-  str += 'Latitude: ' + dataPoint.Latitude + '<br>';
-  str += 'Longitude: ' + dataPoint.Longitude + '<br>';
-  str += 'Time: '
-  time = Number(dataPoint.Time)
-  hour = Math.floor(time)
-  min = Math.round(6000 * (time - hour)) / 100
-  if (hour > 12) { hour -= 12 };
-  str += hour.toString() + ':' + min.toString()
-  str += time > 12 ? 'PM' : 'AM';
-  str += '<br>Group Size: ' + dataPoint.Group_Size;
-  str += '</div>'
-
-  return str;
-}
 
 d3.csv('./data/clean_data.csv', function (data) {
   circles = [];
@@ -40,20 +18,30 @@ d3.csv('./data/clean_data.csv', function (data) {
     lon = coordinate_parser(data[i].Longitude);
     lat = coordinate_parser(data[i].Latitude);
     coordinates.push([lat, lon, num]);
-    var temp = L.divIcon({ popupAnchor: [100, 30] });
+    //var temp = L.divIcon({ popupAnchor: [100, 30] });
     circle = L.circle([lat, lon], {
       weight: 0.2,
       color: 'white',
       fillcolor: 'yellow',
       fillOpacity: 0.5,
       radius: 16
-    });
+    }).on('click', showPic.bind(null, data[i].ID,
+                                      data[i].Mo,
+                                      data[i].Da,
+                                      data[i].Yr,
+                                      data[i].Latitude,
+                                      data[i].Longitude,
+                                      data[i].Time,
+                                      data[i].Group_Size
+                                      ));
+    //}).on('click', function(){return showPic(i)});
+    //console.log(i)
 
-    popupContent = document.createElement("img");
-    popupContent = createPopup(data[i]);
-    circle.bindPopup(popupContent, {
-      maxWidth: "auto"
-    });
+    // popupContent = document.createElement("img");
+    // popupContent = createPopup(data[i]);
+    // circle.bindPopup(popupContent, {
+    //   maxWidth: "auto"
+    // });
     circles.push(circle);
   }//iterate through each lat/long
 
@@ -63,32 +51,74 @@ d3.csv('./data/clean_data.csv', function (data) {
   var heat = L.heatLayer(coordinates, { radius: 25 }).addTo(mymap)
 })
 
-var mymap = L.map('map_mantas').setView([21.48, -157.82], 14.);;
+var mymap = L.map('map_mantas').setView([21.48, -157.825], 15);;
 L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
   attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(mymap);
 
-$(function () {
-  $("#slider-range").slider({
-    range: true,
-    min: 0,
-    max: 28,
-    values: [0, 28],
-    slide: function (event, ui) {
-      $("#amount").val("Day " + ui.values[0] + " - Day " + ui.values[1]);
-      lower = ui.values[0];
-      upper = ui.values[1];
-    }
-  });
-  $("#amount").val("Day " + $("#slider-range").slider("values", 0) +
-    " - Day " + $("#slider-range").slider("values", 1));
-});
+// $(function () {
+//   $("#slider-range").slider({
+//     range: true,
+//     min: 0,
+//     max: 28,
+//     values: [0, 28],
+//     slide: function (event, ui) {
+//       $("#amount").val("Day " + ui.values[0] + " - Day " + ui.values[1]);
+//       lower = ui.values[0];
+//       upper = ui.values[1];
+//     }
+//   });
+//   $("#amount").val("Day " + $("#slider-range").slider("values", 0) +
+//     " - Day " + $("#slider-range").slider("values", 1));
+// });
 
+function showPic(id, mo, da, yr, lat, lon, time, gsize) {
+  str = '<div><img src = '
+  str += 'images/mantapics/' + id.toString() + '.jpg';
+  str += ' height="200"><hr>';
+  str += '<div>DATE: ' + mo + '/' + da + '/' + yr + '<br>';
+  str += 'Latitude: ' + lat + '<br>';
+  str += 'Longitude: ' + lon + '<br>';
+  str += 'Time: '
+  time = Number(time)
+  hour = Math.floor(time)
+  min = Math.round(6000 * (time - hour)) / 100
+  if (hour > 12) { hour -= 12 };
+  if (min<10) {min = '0' + min.toString()}
+  str += hour.toString() + ':' + min.toString()
+  str += time > 12 ? 'PM' : 'AM';
+  str += '<br>Group Size: ' + gsize;
+  str += '</div>'
+
+  document.getElementById('show_pic').innerHTML = str;
+}
+
+// //INITIAL BULIT FOR THE MAP
+// function createPopup(dataPoint) {
+//   //add image
+//   str = '<div><img src = '
+//   str += 'images/mantapics/' + dataPoint.ID.toString() + '.jpg';
+//   str += ' height="200"><hr>';
+//   str += '<div>DATE: ' + dataPoint.Mo + '/' + dataPoint.Da + '/' + dataPoint.Yr + '<br>';
+//   str += 'Latitude: ' + dataPoint.Latitude + '<br>';
+//   str += 'Longitude: ' + dataPoint.Longitude + '<br>';
+//   str += 'Time: '
+//   time = Number(dataPoint.Time)
+//   hour = Math.floor(time)
+//   min = Math.round(6000 * (time - hour)) / 100
+//   if (hour > 12) { hour -= 12 };
+//   str += hour.toString() + ':' + min.toString()
+//   str += time > 12 ? 'PM' : 'AM';
+//   str += '<br>Group Size: ' + dataPoint.Group_Size;
+//   str += '</div>'
+
+//   return str;
+// }
 
 var lower = 0;
 var upper = 28;
-function update(){
+function update() {
   console.log('hello world')
 }
 
-
+//document.getElementById('show_pic').innerHTML = 'Hello world'
