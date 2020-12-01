@@ -68,6 +68,19 @@
                                         sightings increases.
                                     </p>
                                     <div id="population" style="height:400px; width:100%"></div>
+                                    <br>
+                                    <div class='content'>
+                                        <div class='ui two column grid'>
+                                            <div class='ui column' style="text-align:center">
+                                                Sighting Photo
+                                                <div id='show_pic1' style="height:400px;border:2px solid black"></div>
+                                            </div>
+                                            <div class='ui column' style="text-align:center">
+                                                Reference Photo
+                                                <div id='show_pic2' style="height:400px;border:2px solid black"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <p id='font'>
                                         <br>
                                         The population of mantas that use Kaneohe Bay seems to be relatively small, at
@@ -148,7 +161,6 @@
             },
             text: manta_id,
             hovertemplate: 'Manta Sighting: %{x} <br>Manta ID: %{text}<extra></extra>'
-            //<!-- Display /images/mantapics/x.jpg and /images/referencepics/text.jpg -->
         };
 
         var asymptote = {
@@ -215,7 +227,26 @@
 
         Plotly.newPlot('population', data, population_layout, { displayModeBar: false });
 
+                var myPlot = document.getElementById('population'),
+            data = data,
+            layout = population_layout;
+
+        myPlot.on('plotly_click', function(data) {
+            pic_num = data.points[data.points.length - 1].x;
+            ref_num = manta_id[pic_num - 1];
+
+            showPics(pic_num, ref_num);
+        });
+
     })
+
+        function showPics(pic_num, ref_num) {
+        str_pic = '<div><img src = images/bellypics/' + ("0000" + pic_num).slice(-3) + '.jpg style="height:396px;width:100%;object-fit:contain;">';
+        str_ref = '<div><img src = images/referencepics/' + ("00" + ref_num).slice(-2) + '.jpg style="height:396px;width:100%;object-fit:contain;">';
+
+        document.getElementById('show_pic1').innerHTML = str_pic;
+        document.getElementById('show_pic2').innerHTML = str_ref;
+    }
 
 </script>
 
