@@ -3,8 +3,11 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Slabo+27px|Titillium+Web&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Acme&family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+
+
 :root{
-  --myFont: 'Roboto';
+  --myFont: 'Asap';
   /*
       font-family: 'Slabo 27px', serif;
       font-family: 'Do Hyeon', sans-serif;
@@ -20,6 +23,11 @@
 
 body #fonts {
 font-family: var(--myFont), sans-serif;
+}
+
+body #page-title {
+  font-family: var(--myFont), sans-serif;
+  color:#4d5b66;
 }
 
 body #white {
@@ -89,4 +97,17 @@ body {
 
 .ui.menu .item {
   color: black;
+}
+
+.ui.centered.header.top {
+  font-family: 'Acme', sans-serif;
+  font-size: 40pt;
+}
+
+.ui.header.page-title {
+  color: #4d5b66;
+}
+
+.special {
+  color: green;
 }
