@@ -10,7 +10,9 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Acme&family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
+    </style>
 
 </head>
 
@@ -21,7 +23,7 @@
         <br>
         <div class="ui inverted container">
             <div class="ui inverted segment">
-                <h1 class='ui centered header'>The Mantas of Kaneohe Bay</h1>
+                <h1 class='ui centered header top'>The Mantas of Kaneohe Bay</h1>
                 <div class="ui inverted secondary pointing six item menu">
                     <a class="item" href="index.html" id="font">Home</a>
                     <a class="item" href="What.html" id="font">What</a>
@@ -125,6 +127,7 @@
         var lunar_layout = {
             title: "by Lunar Day",
             font: {
+                family: 'ABeeZee',
                 size: 15
             },
             showlegend: false,
@@ -186,14 +189,16 @@
                     opacity: 0.7
                 },
                 //cliponaxis: false,
-                hovertext: "test",
-                hovertemplate: "%{r} mantas"
+                text: unpack(rows, 'date'),
+                //hovertext: "test",
+                hovertemplate: "%{r} mantas, /n <extra> %{text}"
             }
         ]
 
         var tidal_layout = {
             title: "by Tidal Phase",
             font: {
+                family: 'ABeeZee',
                 size: 14
             },
             showlegend: false,
@@ -238,6 +243,15 @@
         Plotly.newPlot('tidal', tidal_data, tidal_layout);
 
     })
+
+
+    // var today = new Date();
+    // var dd = String(today.getDate()).padStart(2, '0');
+    // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    // var yyyy = today.getFullYear();
+
+    // today = mm + '/' + dd + '/' + yyyy;
+    // document.write(today)
 
 </script>
 
