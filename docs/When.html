@@ -131,6 +131,7 @@
             polar: {
                 bgcolor: "rgb(223, 223, 223)",
                 angularaxis: {
+                    title: "Days since the full moon",
                     type: "category",
                     categoryorder: "array",
                     categoryarray: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
@@ -191,7 +192,7 @@
         ]
 
         var tidal_layout = {
-            title: "by Tidal Phase (0 = high, 180 = low)",
+            title: "by Tidal Phase",
             font: {
                 size: 14
             },
@@ -199,9 +200,10 @@
             polar: {
                 bgcolor: "rgb(223, 223, 223)",
                 angularaxis: {
-                    //type: "category",
-                    //categoryorder: "array",
-                    //categoryarray: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28],
+                    rotation: 90,
+                    tickmode: "array",
+                    tickvals: [0,180],
+                    ticktext: ['high/rising?', 'low/falling?'],
                     tickwidth: 2,
                     tickfont: {
                         size: 14
