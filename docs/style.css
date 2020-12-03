@@ -25,6 +25,11 @@ body #fonts {
 font-family: var(--myFont), sans-serif;
 }
 
+body #page-title {
+  font-family: var(--myFont), sans-serif;
+  color:#4d5b66;
+}
+
 body #white {
   font-family: var(--myFont), sans-serif;
   background-color: rgba(255,255,255,0.5);
@@ -97,4 +102,12 @@ body {
 .ui.centered.header.top {
   font-family: 'Acme', sans-serif;
   font-size: 40pt;
+}
+
+.ui.header.page-title {
+  color: #4d5b66;
+}
+
+.special {
+  color: green;
 }
