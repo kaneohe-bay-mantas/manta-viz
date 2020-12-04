@@ -66,7 +66,6 @@ body #active-menu-text {
   padding-left: 1em; 
 }
 
-
 body #main-title {
   font-family: 'Acme', sans-serif;
   font-size: 20pt;
@@ -79,19 +78,6 @@ body #page-title {
   color: #4d5b66; 
 }
 
-/*
-    font-family: 'Slabo 27px', serif;
-    font-family: 'Do Hyeon', sans-serif;
-    font-family: 'Titillium Web', sans-serif;
-    font-family: 'Lora', serif;
-    font-family: 'Roboto', serif;
-*/
-
-
-/*
-body {
-  background-color: #7dcea0;
-}*/
 body {
   background: url('images/manta_background_new.jpg');
   background-size: cover;
@@ -104,18 +90,6 @@ body {
   border: none;
 }
 
-.ui.inverted.segment {
-  background-color: none;
-}
-
-.ui.container.borderless.topmenu.menu {
-  background-color: white;
-  box-shadow: none;
-  border: none;
-  border-radius: 0;
-  margin: 0;
-}
-
 .ui.header.page-title {
   color: #4d5b66;
 }
@@ -123,4 +97,8 @@ body {
 .special {
 	color:#26669E;
 	font-weight:bold;
+}
+
+.ui.centered.card {
+  background-color: rgba(255,255,255,0.9);
 }
