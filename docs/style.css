@@ -59,10 +59,24 @@ body #menu-text {
   padding-left: 1em; 
 }
 
+body #active-menu-text {
+  font-family: 'Acme', sans-serif;
+  font-size: large;
+  color: #657886;
+  padding-left: 1em; 
+}
+
+
 body #main-title {
   font-family: 'Acme', sans-serif;
   font-size: 20pt;
   color: #163e61; 
+}
+
+body #page-title {
+  font-family: 'Asap', sans-serif;
+  font-size: 20pt;
+  color: #4d5b66; 
 }
 
 /*
