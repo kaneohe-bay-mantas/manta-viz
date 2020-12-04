@@ -59,7 +59,7 @@
                                         been spotted once or the belly photo is the best one for that individual.
                                         <br>
                                         <br>
-                                        Despite not seeing every manta, we can estimate the total population of mantas
+                                        Despite not <text class="special">seeing every manta</text>, we can estimate the total population of mantas
                                         based on the rate at which we encounter new mantas and resight old mantas.
                                         Basically, if we see the same mantas over and over it means that there are few
                                         mantas, and if most of the mantas we see are new it means that there are many
@@ -73,11 +73,15 @@
                                         <div class='ui two column grid'>
                                             <div class='ui column' style="text-align:center">
                                                 Sighting Photo
-                                                <div id='show_pic1' style="height:400px;border:2px solid black"></div>
+                                                <div id='show_pic1' style="height:400px;border:2px solid black;display:flex;align-items:center;justify-content:center;">
+                                                    Click a point in the above plot to display the associated image
+                                                </div>
                                             </div>
                                             <div class='ui column' style="text-align:center">
                                                 Reference Photo
-                                                <div id='show_pic2' style="height:400px;border:2px solid black"></div>
+                                                <div id='show_pic2' style="height:400px;border:2px solid black;display:flex;align-items:center;justify-content:center;">
+                                                    Click a point in the above plot to display the associated image
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -182,7 +186,7 @@
             mode: 'lines',
             name: 'Data Fit',
             line: {
-                color: '8EC1ED',
+                color: '#8EC1ED',
                 width: 4
             },
             hoverinfo: 'skip'

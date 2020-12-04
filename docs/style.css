@@ -90,3 +90,8 @@ body {
 .ui.menu .item {
   color: black;
 }
+
+.special {
+	color:#26669E;
+	font-weight:bold;
+}
