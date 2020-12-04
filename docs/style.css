@@ -45,17 +45,30 @@ body #temp {
 }
 
 body #menu {
-  z-index: 9999;
+  z-index: 1;
   position:fixed;
-  margin-left: 15% !important;
-  width: 70% !important;
-  margin-right: 15% !important;
-  
+  margin-left: 1% !important;
+  margin-right: 1% !important;
+  width: 98%;
+  background-color: transparent;
 }
 
 body #font {
   font-family: var(--myFont), sans-serif;
   color: black;
+}
+
+body #menu-text {
+  font-family: 'Acme', sans-serif;
+  font-size: large;
+  color: #163e61;
+  padding-left: 1em; 
+}
+
+body #main-title {
+  font-family: 'Acme', sans-serif;
+  font-size: 20pt;
+  color: #163e61; 
 }
 
 /*
@@ -84,7 +97,7 @@ body {
 }
 
 .ui.inverted.segment {
-  background-color: #437860;
+  background-color: none;
 }
 
 .ui.container.borderless.topmenu.menu {
@@ -93,15 +106,6 @@ body {
   border: none;
   border-radius: 0;
   margin: 0;
-}
-
-.ui.menu .item {
-  color: black;
-}
-
-.ui.centered.header.top {
-  font-family: 'Acme', sans-serif;
-  font-size: 40pt;
 }
 
 .ui.header.page-title {
