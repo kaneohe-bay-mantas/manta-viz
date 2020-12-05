@@ -51,14 +51,18 @@ body #menu-text {
   font-family: 'Acme', sans-serif;
   font-size: large;
   color: #163e61;
-  padding-left: 2em; 
+  padding-left: 3em; 
 }
 
 body #active-menu-text {
   font-family: 'Acme', sans-serif;
   font-size: large;
   color: #657886;
-  padding-left: 2em; 
+  padding-left: 3em;
+  text-shadow: -1px 1px 2px    #b1c1ccab,
+				  1px 1px 2px   #b1c1ccab,
+				 1px -1px 0   #b1c1ccab;
+				-1px -1px 0   #b1c1ccab; 
 }
 
 body #main-title {
@@ -70,13 +74,21 @@ body #main-title {
 body #page-title {
   font-family: 'Asap', sans-serif;
   font-size: xx-large;
-  color: #4d5b66; 
+  color: #4d5b66;
+  text-shadow: -1px 1px 2px   #163e618f,
+				  1px 1px 2px   #163e618f,
+				 1px -1px 0   #163e618f;
+				-1px -1px 0   #163e618f; 
 }
 
 body #footer {
   font-family: 'Asap', sans-serif;
   font-size: medium;
-  color: white; 
+  color:  #cbd5dd; 
+  text-shadow: -1px 1px 2px   #163e618f,
+				  1px 1px 2px   #163e618f,
+				 1px -1px 0   #163e61;
+				-1px -1px 0   #163e61;
 }
 
 
