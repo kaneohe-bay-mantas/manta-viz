@@ -3,15 +3,10 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon|Slabo+27px|Titillium+Web&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lora&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Acme&family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Overpass:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
 :root{
   --myFont: 'Roboto';
-  /*
-      font-family: 'Slabo 27px', serif;
-      font-family: 'Do Hyeon', sans-serif;
-      font-family: 'Titillium Web', sans-serif;
-      font-family: 'Lora', serif;
-      font-family: 'Roboto', serif;
-  */
 }
 /*Opacity for the heat map*/
 .leaflet-heatmap-layer{
@@ -24,7 +19,7 @@ font-family: var(--myFont), sans-serif;
 
 body #white {
   font-family: var(--myFont), sans-serif;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.7);
   border-radius: 5px;
   box-shadow: 0 0 15px 10px #141414;
   padding: 10px;
@@ -37,12 +32,14 @@ body #temp {
 }
 
 body #menu {
-  z-index: 9999;
+  z-index: 2;
   position:fixed;
-  margin-left: 15% !important;
-  width: 70% !important;
-  margin-right: 15% !important;
-  
+  margin-left: 1% !important;
+  margin-right: 1% !important;
+  width: 98%;
+  background: url('images/manta_background_new.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 body #font {
@@ -50,19 +47,39 @@ body #font {
   color: black;
 }
 
-/*
-    font-family: 'Slabo 27px', serif;
-    font-family: 'Do Hyeon', sans-serif;
-    font-family: 'Titillium Web', sans-serif;
-    font-family: 'Lora', serif;
-    font-family: 'Roboto', serif;
-*/
+body #menu-text {
+  font-family: 'Acme', sans-serif;
+  font-size: large;
+  color: #163e61;
+  padding-left: 2em; 
+}
+
+body #active-menu-text {
+  font-family: 'Acme', sans-serif;
+  font-size: large;
+  color: #657886;
+  padding-left: 1em; 
+}
+
+body #main-title {
+  font-family: 'Acme', sans-serif;
+  font-size: 20pt;
+  color: #163e61; 
+}
+
+body #page-title {
+  font-family: 'Asap', sans-serif;
+  font-size: xx-large;
+  color: #4d5b66; 
+}
+
+body #footer {
+  font-family: 'Asap', sans-serif;
+  font-size: medium;
+  color: white; 
+}
 
 
-/*
-body {
-  background-color: #7dcea0;
-}*/
 body {
   background: url('images/manta_background_new.jpg');
   background-size: cover;
@@ -75,23 +92,20 @@ body {
   border: none;
 }
 
-.ui.inverted.segment {
-  background-color: #437860;
-}
-
-.ui.container.borderless.topmenu.menu {
-  background-color: white;
-  box-shadow: none;
-  border: none;
-  border-radius: 0;
-  margin: 0;
-}
-
-.ui.menu .item {
-  color: black;
+.ui.header.page-title {
+  color: #4d5b66;
 }
 
 .special {
 	color:#26669E;
 	font-weight:bold;
+}
+
+.ui.centered.card {
+  background-color: rgba(255,255,255,0.9);
+}
+
+.ui.card {
+  background-color: rgba(255,255,255,0.9);
+  padding: 1em 2em;
 }

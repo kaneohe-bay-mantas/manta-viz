@@ -28,24 +28,22 @@
 <body>
 
 
-    <header id='menu'>
-        <br>
-        <div class="ui inverted container">
-            <div class="ui inverted segment">
-                <h1 class='ui centered header top'>The Mantas of Kaneohe Bay</h1>
-                <div class="ui inverted secondary pointing six item menu">
-                    <a class="item" href="index.html" id="font">Home</a>
-                    <a class="item" href="What.html" id="font">What</a>
-                    <a class="active item" href="Where.html" id="font">Where</a>
-                    <a class="item" href="When.html" id="font">When</a>
-                    <a class="item" href="Who.html" id="font">Who</a>
-                    <a class="item" href="Why.html" id="font">Why</a>
-                </div>
+    <div id='menu'>
+        <div class="ui text menu">
+            <div class="main-title">
+                <a class="active item" href="index.html" id="main-title">The Mantas of Kaneohe Bay</a>
+            </div>
+            <div class="right menu" style="padding-right: 5em;">
+                <a class="item" href="What.html" id="menu-text">What</a>
+                <a class="active item" href="Where.html" id="active-menu-text">Where</a>
+                <a class="item" href="When.html" id="menu-text">When</a>
+                <a class="item" href="Who.html" id="menu-text">Who</a>
+                <a class="item" href="Why.html" id="menu-text">Why</a>
             </div>
         </div>
-    </header>
+    </div>
 
-    <div style='padding-top: 200px;'>
+    <div style='padding-top: 100px;'>
         <div class="ui grid">
             <div class="ui three wide column"></div>
 
@@ -94,11 +92,16 @@
                                     </div>
                                 </div>
 
-                                <div class='ui content'></div>
-
-                                <p id='font'>
-                                    <text class="special">Within the study area manta sightings are tightly clustered along the inner ledge of the sandbar</text>, particularly near coral-covered sections and patch reefs just off ledge. Very few mantas are observed in the deeper waters or near patch reefs farther from the sandbar. <text class="special">This leads us to believe that plankton are concentrated along this ledge when mantas are sighted feeding there</text>, though we need to examine tide data to understand why this may be the case.
-                                </p>
+                                <div class='ui content'>
+                                    <p id='font'>
+                                        <text class="special">Within the study area manta sightings are tightly clustered along the inner ledge of the
+                                        sandbar</text>, particularly near coral-covered sections and patch reefs just off ledge. Very few mantas are
+                                        observed in the deeper waters or near patch reefs farther from the sandbar. <text class="special">This leads us to
+                                        believe that plankton are concentrated along this ledge when mantas are sighted feeding there</text>, though we
+                                        need to examine tide data to understand why this may be the case.
+                                    </p>
+                                </div>
+                                
                             </div>
                         </div>
                         <!-- <div class='ui row'>
@@ -113,10 +116,11 @@
             <div class="ui three wide column"></div>
         </div>
 
-        <div class="ui fotter container">
-            <hr>
-            <h5 class="ui centered header" id="font" style="color:black">University of Hawaii at Manoa ICS484 /
-                ACM484 Group Project</h5>
+        <div class="ui footer container">
+            <br>
+            <h5 class="ui centered header" id="footer">
+                University of Hawaii at Manoa ICS484 / ACM484 Group Project
+            </h5>
             <br>
         </div>
 

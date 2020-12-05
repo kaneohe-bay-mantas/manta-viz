@@ -1,139 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <title>Manta</title>
-  <!--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"><!-->
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
-  <link rel="stylesheet" href="style.css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script type="text/javascript"
-    src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+  <head>
+    <meta charset="UTF-8">
+    <title>Manta</title>
+    <!--><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"><!-->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
 
 
-</head>
 
-<body>
 
-  <div id='menu'>
-    <br>
-    <div class="ui inverted container">
-      <div class="ui inverted segment">
-        <h1 class='ui centered header top'>The Mantas of Kaneohe Bay</h1>
-        <div class="ui inverted secondary pointing six item menu">
-          <a class="active item" href="index.html" id="font">Home</a>
-          <a class="item" href="What.html" id="font">What</a>
-          <a class="item" href="Where.html" id="font">Where</a>
-          <a class="item" href ="When.html" id="font">When</a>
-          <a class="item" href="Who.html" id="font">Who</a>
-          <a class="item" href="Why.html" id="font">Why</a>
+  </head>
+
+  <body>
+
+    <div id='menu'>
+      <div class="ui text menu">
+        <div class="main-title">
+          <a class="active item" href="index.html" id="main-title">The Mantas of Kaneohe Bay</a>
+        </div>
+        <div class="right menu" style="padding-right: 5em;">
+          <a class="item" href="What.html" id="menu-text">What</a>
+          <a class="item" href="Where.html" id="menu-text">Where</a>
+          <a class="item" href="When.html" id="menu-text">When</a>
+          <a class="item" href="Who.html" id="menu-text">Who</a>
+          <a class="item" href="Why.html" id="menu-text">Why</a>
         </div>
       </div>
     </div>
-  </div>
 
-  <div style='padding-top: 200px;'>
-    <div class="ui grid">
-      <div class="ui three wide column"></div>
 
-      <div class="ui ten wide column">
+    <div style='padding-top: 100px;'>
+      <div class="ui grid">
+        <div class="ui three wide column"></div>
 
-        <h1 class="ui header" id="page-title">Welcome to Team Manta</h1>
-        <hr style='color:white'>
-        <div class="ui two column grid">
-          <!--Left Column-->
-          <div class="ui column">
-            <h3 class='ui header' style='color:black' id='font'>About Us</h3>
+        <div class="ui ten wide column">
+
+          <h1 class="ui header" id="page-title" style="font-size: xx-large;">Welcome to Team Manta</h1>
+          <hr style='color:white'>
+          <!--About section-->
+          <div>
+
             <div class="ui container">
-              <h3 class="ui header" id="white">
-                <!--<i class=='small icons'><i class="fitted angle right icon"></i></i>-->
-                Team Manta is a group dedicated to visualizing Manta Ray data for Kāne'ohe Bay.<br>
-                <br>
-                <!--<i class=='small icons'><i class="fitted angle right icon"></i></i>-->
-                Course: University of Hawai'i at Mānoa - ICS 484 (Fall 2020)<br>
-                <br>
-                <!--<i class=='small icons'><i class="fitted angle right icon"></i></i>-->
-                Please feel free to contact us with any questions (or data!)</h3>
-            </div>
-          </div>
-          <!--Right Column-->
-          <div class="ui column">
-            <h3 class="ui header" id="font" style='color:black'>Members</h3>
 
-            <div class="ui cards">
-              <!--Katrina's card-->
-              <div class="card">
-                <div class="content">
-                  <!-- <a class='image'> -->
-                    <img class="right floated mini rounded ui tiny image" src="images/members/katrina.png">
-                  <!-- </a> -->
-                  <div class='header' , id='font'>Katrina Turner, ICS</div>
-                  <div class="extra content" id="font">
-                    <a href="mailto:khj@hawaii.edu" style='color:royalblue' id="font">
-                      <i class="envelope icon"></i>
-                      <u>khj@hawaii.edu</u>
-                    </a>
+              <div class="ui header" id="white" style="padding: 1em 2em;">
+                <h2 style='color:#26669E; font-weight: 600;' id='font'>About Us</h2>
+                <!--text-->
+                <div>
+                  Team Manta is a group of students at the University of Hawai'i at Mānoa dedicated to visualizing Manta
+                  Ray data for Kāne'ohe Bay.<br>
+                  <br>
+                  Course: University of Hawai'i at Mānoa - ICS 484 (Fall 2020)<br>
+                  <br>
+                  Please feel free to contact us with any questions (or data!)
+                </div>
+                <br>
+                <!--member cards-->
+                <div class="ui cards">
+                  <!--Katrina's card-->
+                  <div class="ui centered card">
+                    <!-- <a class='image'> -->
+                    <div class="content">
+                      <div>
+                        <img class="ui centered circular image" src="images/members/katrina.png" style="width: 100%;">
+                      </div>
+                      <div class='center aligned header' id='font'>
+                        <br>
+                        <a href="https://katrinaturner.github.io/">Katrina Turner, ICS</a>
+                      </div>
+                      <div class="meta">
+                        Katrina is a Computer Science Graduate Student and Research Assistant at LAVA.
+                      </div>
+                    </div>
+                    <!-- </a> -->
+                    <div class="extra content">
+                      <a href="mailto:khj@hawaii.edu" id="card-font">
+                        <i class="envelope icon"></i>
+                        <u>khj@hawaii.edu</u>
+                      </a>
+                      <br>
+                      <a href="https://www.linkedin.com/in/katrina-h-turner-a0417b174/">
+                        <i class="linkedin icon"></i>
+                        <u>LinkedIn</u>
+                      </a>
+                    </div>
                   </div>
-                </div>
-              </div>
-              <!--Toby's card-->
-              <div class="card">
-                <div class="content">
-                  <!-- <a class='image'> -->
-                    <img class="right floated mini rounded ui tiny image" src="images/members/toby.png">
-                  <!-- </a> -->
-                  <div class='header' , id='font'>Toby Matthews, Marine Biology</div>
-                  <div class="extra content" id="font">
-                    <a href="mailto:tobyem@hawaii.edu" style='color:royalblue' id="font">
-                      <i class="envelope icon"></i>
-                      <u>tobyem@hawaii.edu</u>
-                    </a>
-                    <a href="https://www.linkedin.com/in/toby-matthews/" style='color:royalblue' id="font">
-                    	<i class="home icon"></i>
-                    	<u>LinkedIn</u>
-                    </a>
-                    <br><br>
-                	PhD student focusing on low-cost fishery management, plus some fun with mantas on the side
-                </div>
-                </div>
-              </div>
-              <!--Yusuke's card-->
-              <div class="card">
-                <div class="content">
-                  <!-- <a class='image'> -->
-                    <img class="right floated mini rounded ui tiny image" src="images/members/yusuke.png">
-                  <!-- </a> -->
-                  <div class='header' , id='font'>Yusuke Hatanaka, ICS</div>
-                  <div class="extra content" id="font">
-                    <a href="mailto:yusukemh@hawaii.edu" style='color:royalblue' id="font">
-                      <i class="envelope icon"></i>
-                      <u>yusukemh@hawaii.edu</u>
-                    </a>
+                  <!--Toby's card-->
+                  <div class="ui centered card">
+                    <!-- <a class='image'> -->
+                    <div class="content">
+                      <div>
+                        <img class="ui centered circular image" src="images/members/toby.png" style="width: 100%;">
+                      </div>
+                      <div class='center aligned header' id='font'>
+                        <br>
+                        <a>Toby Matthews, <br> Marine Biology</a>
+                      </div>
+                      <div class="meta">
+                        Toby is a PhD student focusing on low-cost fishery management, plus some fun with mantas on the
+                        side.
+                      </div>
+                    </div>
+                    <!-- </a> -->
+                    <div class="extra content">
+                      <a href="mailto:tobyem@hawaii.edu" id="card-font">
+                        <i class="envelope icon"></i>
+                        <u>tobyem@hawaii.edu</u>
+                      </a>
+                      <br>
+                      <a href="https://www.linkedin.com/in/toby-matthews/">
+                        <i class="linkedin icon"></i>
+                        <u>LinkedIn</u>
+                      </a>
+                    </div>
+                  </div>
+                  <!--Yusuke's card-->
+                  <div class="ui centered card">
+                    <!-- <a class='image'> -->
+                    <div class="content">
+                      <div>
+                        <img class="ui centered circular image" src="images/members/yusuke.png" style="width: 100%;">
+                      </div>
+                      <div class='center aligned header' id='font'>
+                        <br>
+                        <a href="">Yusuke Hatanaka, ICS</a>
+                      </div>
+                      <div class="meta">
+                        Yusuke is...
+                      </div>
+                    </div>
+                    <!-- </a> -->
+                    <div class="extra content">
+                      <a href="mailto:yusukemh@hawaii.edu" id="card-font">
+                        <i class="envelope icon"></i>
+                        <u>yusukemh@hawaii.edu</u>
+                      </a>
+                      <br>
+                      <a href="https://www.linkedin.com/in/yusuke-hatanaka-91535716a/">
+                        <i class="linkedin icon"></i>
+                        <u>LinkedIn</u>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-            <br>
           </div>
         </div>
-
       </div>
 
       <div class="ui three wide column"></div>
     </div>
 
 
-    <div class="ui fotter container">
-      <hr>
-      <h5 class="ui centered header" id="font" style="color:black">
+    <div class="ui footer container">
+      <br>
+      <h5 class="ui centered header" id="footer">
         University of Hawaii at Manoa ICS484 / ACM484 Group Project
       </h5>
       <br>
     </div>
-  </div>
+    </div>
 
 
-</body>
+  </body>
 
 </html>
