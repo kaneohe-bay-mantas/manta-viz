@@ -7,13 +7,6 @@
 
 :root{
   --myFont: 'Roboto';
-  /*
-      font-family: 'Slabo 27px', serif;
-      font-family: 'Do Hyeon', sans-serif;
-      font-family: 'Titillium Web', sans-serif;
-      font-family: 'Lora', serif;
-      font-family: 'Roboto', serif;
-  */
 }
 /*Opacity for the heat map*/
 .leaflet-heatmap-layer{
@@ -26,7 +19,7 @@ font-family: var(--myFont), sans-serif;
 
 body #white {
   font-family: var(--myFont), sans-serif;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,0.7);
   border-radius: 5px;
   box-shadow: 0 0 15px 10px #141414;
   padding: 10px;
@@ -39,12 +32,14 @@ body #temp {
 }
 
 body #menu {
-  z-index: 1;
+  z-index: 2;
   position:fixed;
   margin-left: 1% !important;
   margin-right: 1% !important;
   width: 98%;
-  background-color: transparent;
+  background: url('images/manta_background_new.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 body #font {
@@ -74,9 +69,10 @@ body #main-title {
 
 body #page-title {
   font-family: 'Asap', sans-serif;
-  font-size: 20pt;
+  font-size: xx-large;
   color: #4d5b66; 
 }
+
 
 body {
   background: url('images/manta_background_new.jpg');
@@ -101,4 +97,9 @@ body {
 
 .ui.centered.card {
   background-color: rgba(255,255,255,0.9);
+}
+
+.ui.card {
+  background-color: rgba(255,255,255,0.9);
+  padding: 1em 2em;
 }
