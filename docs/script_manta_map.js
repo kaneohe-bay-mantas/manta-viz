@@ -6,9 +6,10 @@ function coordinate_parser(string) {
   }
   return ret
 }
-
+var circleLayer;
 d3.csv('./data/clean_data.csv', function (data) {
   circles = [];
+
 
   coordinates = []
 
@@ -34,20 +35,13 @@ d3.csv('./data/clean_data.csv', function (data) {
                                       data[i].Time,
                                       data[i].Group_Size
                                       ));
-    //}).on('click', function(){return showPic(i)});
-    //console.log(i)
-
-    // popupContent = document.createElement("img");
-    // popupContent = createPopup(data[i]);
-    // circle.bindPopup(popupContent, {
-    //   maxWidth: "auto"
-    // });
     circles.push(circle);
   }//iterate through each lat/long
 
-  for (i = 0; i < circles.length; i++) {
-    circles[i].addTo(mymap);
-  }
+  // for (i = 0; i < circles.length; i++) {)
+  //   circles[i].addTo(mymap);
+  // }
+  circleLayer = L.layerGroup(circles).addTo(mymap);
   var heat = L.heatLayer(coordinates, { radius: 25 }).addTo(mymap)
 })
 
@@ -56,21 +50,21 @@ L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/
   attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
 }).addTo(mymap);
 
-// $(function () {
-//   $("#slider-range").slider({
-//     range: true,
-//     min: 0,
-//     max: 28,
-//     values: [0, 28],
-//     slide: function (event, ui) {
-//       $("#amount").val("Day " + ui.values[0] + " - Day " + ui.values[1]);
-//       lower = ui.values[0];
-//       upper = ui.values[1];
-//     }
-//   });
-//   $("#amount").val("Day " + $("#slider-range").slider("values", 0) +
-//     " - Day " + $("#slider-range").slider("values", 1));
-// });
+$(function () {
+  $("#slider-range").slider({
+    range: true,
+    min: 0,
+    max: 28,
+    values: [0, 28],
+    slide: function (event, ui) {
+      $("#amount").val("Day " + ui.values[0] + " - Day " + ui.values[1]);
+      lower = ui.values[0];
+      upper = ui.values[1];
+    }
+  });
+  $("#amount").val("Day " + $("#slider-range").slider("values", 0) +
+    " - Day " + $("#slider-range").slider("values", 1));
+});
 
 function showPic(id, mo, da, yr, lat, lon, time, gsize) {
   str = '<div><img src = '
@@ -118,7 +112,11 @@ function showPic(id, mo, da, yr, lat, lon, time, gsize) {
 var lower = 0;
 var upper = 28;
 function update() {
-  console.log('hello world')
+  lower = $("#slider-range").slider("values", 0);
+  upper = $("#slider-range").slider("values", 1);
+  console.log('hello world', lower, upper);
+  //remove the layer
+  mymap.removeLayer(circleLayer);
 }
 
 //document.getElementById('show_pic').innerHTML = 'Hello world'
