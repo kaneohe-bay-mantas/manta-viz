@@ -32,7 +32,7 @@ body #temp {
 }
 
 body #menu {
-  z-index: 2;
+  z-index: 9999;
   position:fixed;
   margin-left: 1% !important;
   margin-right: 1% !important;
