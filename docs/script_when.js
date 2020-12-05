@@ -1,33 +1,3 @@
-// from https://gist.github.com/endel/dfe6bb2fbe679781948c
-function getMoonPhase(year, month, day) {
-    var c = e = jd = b = 0;
-    if (month < 3) {
-        year--;
-        month += 12;
-    }
-    ++month;
-    c = 365.25 * year;
-    e = 30.6 * month;
-    jd = c + e + day - 694039.09; //jd is total days elapsed
-    jd /= 29.5305882; //divide by the moon cycle
-    b = parseInt(jd); //int(jd) -> b, take integer part of jd
-    jd -= b; //subtract integer part to leave fractional part of original jd
-    b = Math.round(jd * 8); //scale fraction from 0-8 and round
-    if (b >= 8) {
-        b = 0; //0 and 8 are the same so turn 8 into 0
-    }
-    // 0 => New Moon
-    // 1 => Waxing Crescent Moon
-    // 2 => Quarter Moon
-    // 3 => Waxing Gibbous Moon
-    // 4 => Full Moon
-    // 5 => Waning Gibbous Moon
-    // 6 => Last Quarter Moon
-    // 7 => Waning Crescent Moon
-
-    return b;
-}
-
 Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
     function unpack(rows, key) {
         return rows.map(function (row) { return row[key]; });
@@ -72,7 +42,6 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
         polar: {
             bgcolor: "rgb(223, 223, 223)",
             angularaxis: {
-                title: "Days since the full moon",
                 type: "category",
                 categoryorder: "array",
                 categoryarray: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
@@ -80,7 +49,9 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
                 tickfont: {
                     size: 14
                 },
-                ticktext: [0, 7, 14, 21],
+                tickmode: "array",
+                tickvals: [0, 4, 10.5, 14.5, 18.5, 25],
+                ticktext: ['full moon', 'waxing crescent', 'waxing gibbous', 'new moon', 'waning gibbous', 'waning crescent'],
                 linewidth: 3,
                 layer: "below traces",
                 title: "Lunar Day",
@@ -181,3 +152,4 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
     Plotly.newPlot('tidal', tidal_data, tidal_layout);
 
 })
+
