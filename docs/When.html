@@ -1,116 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Manta</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-    <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
-    
+    <head>
+        <meta charset="UTF-8">
+        <title>Manta</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+
         <!--Load required imports-->
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Acme&family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
-    </style>
-</head>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Acme&family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
 
-<body>
+        </style>
+    </head>
+
+    <body>
 
 
-    <div id='menu'>
-        <div class="ui text menu">
-            <div class="main-title">
-                <a class="active item" href="index.html" id="main-title">The Mantas of Kaneohe Bay</a>
-            </div>
-            <div class="right menu" style="padding-right: 5em;">
-                <a class="item" href="What.html" id="menu-text">What</a>
-                <a class="item" href="Where.html" id="menu-text">Where</a>
-                <a class="active item" href="When.html" id="active-menu-text">When</a>
-                <a class="item" href="Who.html" id="menu-text">Who</a>
-                <a class="item" href="Why.html" id="menu-text">Why</a>
+        <div id='logo'>
+            <a class="active item" href="index.html" id="main-title">
+                <img class="ui small image" src="./images/logo2.png">
+            </a>
+        </div>
+
+        <div id='menu'>
+            <div class="ui text menu">
+                <div class="main-title">
+                </div>
+                <div class="right menu" style="padding: 1em 5em;">
+                    <a class="item" href="What.html" id="menu-text">What</a>
+                    <a class="item" href="Where.html" id="menu-text">Where</a>
+                    <a class="active item" href="When.html" id="active-menu-text">When</a>
+                    <a class="item" href="Who.html" id="menu-text">Who</a>
+                    <a class="item" href="Why.html" id="menu-text">Why</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div style='padding-top: 100px;'>
-        <div class="ui grid">
-            <div class="ui three wide column"></div>
+        <div style='padding-top: 100px;'>
+            <div class="ui grid">
+                <div class="ui three wide column"></div>
 
-            <div class="ui ten wide column">
-                <div class="ui three column grid container">
-                    <div class="ui centered row">
-                        <h1 class="ui header" id="page-title">When are they around?</h1>
-                    </div>
+                <div class="ui ten wide column">
+                    <div class="ui three column grid container">
+                        <div class="ui centered row">
+                            <h1 class="ui header" id="page-title">When are they around?</h1>
+                        </div>
 
-                    <!--template-->
-                    <div class="ui grid container" id='clark'>
-                        <div class="ui row">
-                            <div class="ui card" style="width:100%">
-                                <div class="ui grid" style="padding: 1em 2em;">
-                                    <div class="ui row">
-                                        <p id='font'>
-                                            The distribution of plankton tends to vary with the tide. Since tides are most extreme during the full and new moon,
-                                            it is possible that moon phase also affects the distribution of plankton, and accordingly the mantas that feed on
-                                            them. Thus, <text class="special">there is reason to believe that the number of mantas observed in the bay may vary
-                                                with both the tide and the moon phase</text>. The plots below show how the number of mantas observed varies with
-                                            the moon phase (left) and daily tide (right). Individual days are shown with dots. The angle at which the dot is drawn
-                                            around the origin indicates the moon phase or tide at the time mantas were sighted, and the distance the dot is
-                                            drawn from the origin indicates the number of mantas observed.
-                                        </p>
-                                    </div>
-                                    <br>
-                                    <div class="ui two column row">
-                                        <div class="ui column">
-                                            <div id="lunar" style="width: 95%; margin-right: 5%;"></div>
+                        <!--template-->
+                        <div class="ui grid container" id='clark'>
+                            <div class="ui row">
+                                <div class="ui card" style="width:100%">
+                                    <div class="ui grid" style="padding: 1em 2em;">
+                                        <div class="ui row">
+                                            <p id='font'>
+                                                The distribution of plankton tends to vary with the tide. Since tides
+                                                are most extreme during the full and new moon,
+                                                it is possible that moon phase also affects the distribution of
+                                                plankton, and accordingly the mantas that feed on
+                                                them. Thus, <text class="special">there is reason to believe that the
+                                                    number of mantas observed in the bay may vary
+                                                    with both the tide and the moon phase</text>. The plots below show
+                                                how the number of mantas observed varies with
+                                                the moon phase (left) and daily tide (right). Individual days are shown
+                                                with dots. The angle at which the dot is drawn
+                                                around the origin indicates the moon phase or tide at the time mantas
+                                                were sighted, and the distance the dot is
+                                                drawn from the origin indicates the number of mantas observed.
+                                            </p>
                                         </div>
-                                        <div class="ui column">
-                                            <div class="ui column" id="tidal" style="width: 95%; margin-left: 5%;"></div>
+                                        <br>
+                                        <div class="ui two column row">
+                                            <div class="ui column">
+                                                <div id="lunar" style="width: 95%; margin-right: 5%;"></div>
+                                            </div>
+                                            <div class="ui column">
+                                                <div class="ui column" id="tidal" style="width: 95%; margin-left: 5%;">
+                                                </div>
+                                            </div>
+
                                         </div>
-                                        
+                                        <div class="ui row">
+                                            <p id='font'>
+                                                <br><text class="special">More mantas are observed on rising tides and
+                                                    in the period leading up to the new
+                                                    moon</text> (and to a lesser extent the full moon). On a rising tide
+                                                water flows into the bay. When this water
+                                                encounters an obstacle such as a patch reef or the sandbar, it is forced
+                                                toward the surface in a process called
+                                                upwelling. <text class="special">This concentrates plankton and other
+                                                    particles in the surface waters near these
+                                                    ledges, explaining both the increased feeding by mantas during
+                                                    rising tides and the concentration of manta
+                                                    sightings along the sandbar ledge</text>. In the period around the
+                                                full and new moon tide are more extreme,
+                                                further concentrating plankton along the ledges.
+                                            </p>
+                                        </div>
+                                        <div class="ui row">
+                                            <div id="calendar-heatmap"></div>
+                                        </div>
+
                                     </div>
-                                    <div class="ui row">
-                                        <p id='font'>
-                                            <br><text class="special">More mantas are observed on rising tides and in the period leading up to the new
-                                                moon</text> (and to a lesser extent the full moon). On a rising tide water flows into the bay. When this water
-                                            encounters an obstacle such as a patch reef or the sandbar, it is forced toward the surface in a process called
-                                            upwelling. <text class="special">This concentrates plankton and other particles in the surface waters near these
-                                                ledges, explaining both the increased feeding by mantas during rising tides and the concentration of manta
-                                                sightings along the sandbar ledge</text>. In the period around the full and new moon tide are more extreme,
-                                            further concentrating plankton along the ledges.
-                                        </p>
-                                    </div>
-                                    <div class="ui row">
-                                        <div id="calendar-heatmap"></div>
-                                    </div>
-                                    
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
-
-
                 </div>
+                <div class="ui three wide column"></div>
             </div>
-            <div class="ui three wide column"></div>
+
+            <div class="ui footer container">
+                <br>
+                <h5 class="ui centered header" id="footer">
+                    University of Hawaii at Manoa ICS484 / ACM484 Group Project
+                </h5>
+                <br>
+            </div>
+
+
         </div>
 
-        <div class="ui footer container">
-            <br>
-            <h5 class="ui centered header" id="footer">
-                University of Hawaii at Manoa ICS484 / ACM484 Group Project
-            </h5>
-            <br>
-        </div>
-
-
-    </div>
-
-</body>
-<script src="script_when.js"></script>
-<script src="script_calendar.js"></script>
+    </body>
+    <script src="script_when.js"></script>
+    <script src="script_calendar.js"></script>
 
 </html>
