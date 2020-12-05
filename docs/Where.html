@@ -63,51 +63,82 @@
                                 </div> -->
                                 <div class="content">
                                     <p id='font'>
-                                        <text class="special">Kaneohe Bay has a variety of habitats</text>. Proceeding outward from shore, there are:
-                                        <ul>
-                                            <li>shallow rubble areas with coral along their outer edges (seen as lighter areas with brown perimeters running roughly parallel to shore)</li>
-                                            <li><text class="special">deeper waters dotted with raised coral reef areas called patch reefs</text> (seen as the main dark blue swath spotted with lighter oval-shaped reefs)</li>
-                                            <li><text class="special">the shallow sandbar</text> with varied coral cover that gradually slopes into the open ocean (seen as the continuous white and cyan area with large, darker coral-covered areas)</li>
-                                        </ul>
-                                        <text class="special">Plankton are not uniformly distributed within the bay, and mantas are likely to be sighted wherever plankton are most abundant</text>. The map below shows the locations that mantas have been sighted with blue points, and a heat map indicating the most popular areas. Click on a point so see information about that sighting, including the time, number of mantas observed together, and a photo.
+                                        <text class="special">Kaneohe Bay has a variety of habitats</text>. Proceeding
+                                        outward from shore, there are:
+                                    <ul>
+                                        <li>shallow rubble areas with coral along their outer edges (seen as lighter
+                                            areas with brown perimeters running roughly parallel to shore)</li>
+                                        <li><text class="special">deeper waters dotted with raised coral reef areas
+                                                called patch reefs</text> (seen as the main dark blue swath spotted with
+                                            lighter oval-shaped reefs)</li>
+                                        <li><text class="special">the shallow sandbar</text> with varied coral cover
+                                            that gradually slopes into the open ocean (seen as the continuous white and
+                                            cyan area with large, darker coral-covered areas)</li>
+                                    </ul>
+                                    <text class="special">Plankton are not uniformly distributed within the bay, and
+                                        mantas are likely to be sighted wherever plankton are most abundant</text>. The
+                                    map below shows the locations that mantas have been sighted with blue points, and a
+                                    heat map indicating the most popular areas. Click on a point so see information
+                                    about that sighting, including the time, number of mantas observed together, and a
+                                    photo.
                                     </p>
                                 </div>
                                 <div class='content'>
                                     <div class='ui two column grid'>
-                                        <!-- <div id="slider-range"></div><br>
-                                    <p id='font'>
-                                        <label for="amount">Lunar Cycle Range:</label>
-                                        <input type="text" id="amount" readonly
-                                            style="border:0; color:'black'; font-weight:bold;">
-                                        <button class="ui button" onclick="update()">Update</button>
-                                    </p><br> -->
-                                    <div class='ui column'>
-                                        <div id='map_mantas'
-                                            style="height:600px; width: 100%; background-color: black;">
+                                        <div class='ui column'>
+                                            <div id='map_mantas'
+                                                style="height:550px; width: 100%; background-color: black;">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class='ui column' id='show_pic'>
-                                        
-                                    </div>
+                                        <div class='ui column'>
+                                            <div class='ui row'>
+                                                <div id='show_pic'>
+                                                    <img src='images/mantapics/default.png' height='200' width = '300'><hr>
+                                                    DATE: ---<br>
+                                                    Latitude: ---<br>
+                                                    Longitude: ---<br>
+                                                    Time: ---<br>
+                                                    Group Size: ---<br>
+                                                </div>
+                                                <br>
+                                                <hr>
+                                                <br>
+                                            </div>
+
+                                            <div class='ui row'>
+                                                <div id='font'><b>Use the slider to filter the data by lunar days</b></div>
+                                                <br>
+                                                <div id="slider-range"></div><br>
+                                                <p id='font'>
+                                                    <label for="amount">Lunar Cycle Range:</label>
+                                                    <input type="text" id="amount" readonly
+                                                        style="border:0; color:'black'; font-weight:bold;">
+                                                    <button class="ui button" onclick="update()">Update</button>
+                                                </p><br>
+                                            </div>
+                                        </div>
+                                        <!-- <div class='ui column' id='show_pic'>
+
+                                        </div> -->
                                     </div>
                                 </div>
 
                                 <div class='ui content'>
                                     <p id='font'>
-                                        <text class="special">Within the study area manta sightings are tightly clustered along the inner ledge of the
-                                        sandbar</text>, particularly near coral-covered sections and patch reefs just off ledge. Very few mantas are
-                                        observed in the deeper waters or near patch reefs farther from the sandbar. <text class="special">This leads us to
-                                        believe that plankton are concentrated along this ledge when mantas are sighted feeding there</text>, though we
+                                        <text class="special">Within the study area manta sightings are tightly
+                                            clustered along the inner ledge of the
+                                            sandbar</text>, particularly near coral-covered sections and patch reefs
+                                        just off ledge. Very few mantas are
+                                        observed in the deeper waters or near patch reefs farther from the sandbar.
+                                        <text class="special">This leads us to
+                                            believe that plankton are concentrated along this ledge when mantas are
+                                            sighted feeding there</text>, though we
                                         need to examine tide data to understand why this may be the case.
                                     </p>
                                 </div>
-                                
+
                             </div>
                         </div>
-                        <!-- <div class='ui row'>
-                            <div id='map_mantas' class='ui centered column'
-                                style="height:500px; width: 80%; background-color: black;"></div>
-                        </div>> -->
                     </div>
 
 
