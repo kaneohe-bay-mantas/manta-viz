@@ -32,7 +32,7 @@ body #temp {
 }
 
 body #menu {
-  z-index: 2;
+  z-index: 9998;
   position:fixed;
   margin-left: 1% !important;
   margin-right: 1% !important;
@@ -40,6 +40,12 @@ body #menu {
   background: url('images/manta_background_new.jpg');
   background-size: cover;
   background-attachment: fixed;
+}
+body #logo {
+  z-index: 9999;
+  position:fixed;
+  padding: 0.5em 1em;
+  background: transparent;
 }
 
 body #font {
@@ -49,16 +55,20 @@ body #font {
 
 body #menu-text {
   font-family: 'Acme', sans-serif;
-  font-size: large;
+  font-size: x-large;
   color: #163e61;
   padding-left: 2em; 
 }
 
 body #active-menu-text {
   font-family: 'Acme', sans-serif;
-  font-size: large;
+  font-size: x-large;
   color: #657886;
-  padding-left: 1em; 
+  padding-left: 2em;
+  text-shadow: -1px 1px 2px    #b1c1ccab,
+				  1px 1px 2px   #b1c1ccab,
+				 1px -1px 0   #b1c1ccab;
+				-1px -1px 0   #b1c1ccab; 
 }
 
 body #main-title {
@@ -70,13 +80,21 @@ body #main-title {
 body #page-title {
   font-family: 'Asap', sans-serif;
   font-size: xx-large;
-  color: #4d5b66; 
+  color: #4d5b66;
+  text-shadow: -1px 1px 2px   #163e618f,
+				  1px 1px 2px   #163e618f,
+				 1px -1px 0   #163e618f;
+				-1px -1px 0   #163e618f; 
 }
 
 body #footer {
   font-family: 'Asap', sans-serif;
   font-size: medium;
-  color: white; 
+  color:  #cbd5dd; 
+  text-shadow: -1px 1px 2px   #163e618f,
+				  1px 1px 2px   #163e618f,
+				 1px -1px 0   #163e61;
+				-1px -1px 0   #163e61;
 }
 
 
