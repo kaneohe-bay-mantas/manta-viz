@@ -7,6 +7,7 @@ function coordinate_parser(string) {
   return ret
 }
 var circleLayer;
+var healLayer;
 d3.csv('./data/clean_data.csv', function (data) {
   circles = [];
 
@@ -42,7 +43,7 @@ d3.csv('./data/clean_data.csv', function (data) {
   //   circles[i].addTo(mymap);
   // }
   circleLayer = L.layerGroup(circles).addTo(mymap);
-  var heat = L.heatLayer(coordinates, { radius: 25 }).addTo(mymap)
+  heatLayer = L.heatLayer(coordinates, { radius: 25 }).addTo(mymap)
 })
 
 var mymap = L.map('map_mantas').setView([21.48, -157.825], 15);;
@@ -111,12 +112,60 @@ function showPic(id, mo, da, yr, lat, lon, time, gsize) {
 
 var lower = 0;
 var upper = 28;
+
+
+
+
 function update() {
   lower = $("#slider-range").slider("values", 0);
   upper = $("#slider-range").slider("values", 1);
-  console.log('hello world', lower, upper);
+  //console.log('hello world', lower, upper);
   //remove the layer
   mymap.removeLayer(circleLayer);
+  mymap.removeLayer(heatLayer);
+  //######################################################
+  d3.csv('./data/clean_data.csv', function (data) {
+    circles = [];
+    coordinates = []
+  
+    for (var i = 0; i < data.length; i++) {
+      num = Number(data[i].Group_Size);
+      if (num == 0) { continue; }
+      lon = coordinate_parser(data[i].Longitude);
+      lat = coordinate_parser(data[i].Latitude);
+      lDay = Math.round(Number(data[i].lunar_deg) * 28.0 / 360);
+      //console.log(lDay);
+      if(lDay < lower){continue};
+      if(lDay>upper){continue};
+      coordinates.push([lat, lon, num]);
+      circle = L.circle([lat, lon], {
+        weight: 0.2,
+        color: 'white',
+        fillcolor: 'yellow',
+        fillOpacity: 0.5,
+        radius: 16
+      }).on('click', showPic.bind(null, data[i].ID,
+                                        data[i].Mo,
+                                        data[i].Da,
+                                        data[i].Yr,
+                                        data[i].Latitude,
+                                        data[i].Longitude,
+                                        data[i].Time,
+                                        data[i].Group_Size
+                                        ));
+      circles.push(circle);
+    }//iterate through each lat/long
+    circleLayer = L.layerGroup(circles).addTo(mymap);
+    heatLayer = L.heatLayer(coordinates, { radius: 25 }).addTo(mymap)
+  })
+
 }
 
 //document.getElementById('show_pic').innerHTML = 'Hello world'
+
+// function lunar_day(dFull, mFull, yFull, dCurr, mCurr, yCurr){
+//   //inputs are numerical values
+//   fullDay = new Date(yFull, mFull, dFull);
+//   currDay = new Date(yCurr, mCurr, dCurr);
+//   return currDay - fullDay;
+// }
