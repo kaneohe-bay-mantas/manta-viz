@@ -145,8 +145,8 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
             angularaxis: {
                 rotation: 90,
                 tickmode: "array",
-                tickvals: [0, 180],
-                ticktext: ['high/rising?', 'low/falling?'],
+                tickvals: [0, 90, 180, 270],
+                ticktext: ['high','falling', 'low', 'rising'],
                 tickwidth: 2,
                 tickfont: {
                     size: 14

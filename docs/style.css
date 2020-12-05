@@ -73,6 +73,12 @@ body #page-title {
   color: #4d5b66; 
 }
 
+body #footer {
+  font-family: 'Asap', sans-serif;
+  font-size: medium;
+  color: white; 
+}
+
 
 body {
   background: url('images/manta_background_new.jpg');
