@@ -51,7 +51,7 @@ body #menu-text {
   font-family: 'Acme', sans-serif;
   font-size: large;
   color: #163e61;
-  padding-left: 1em; 
+  padding-left: 2em; 
 }
 
 body #active-menu-text {
