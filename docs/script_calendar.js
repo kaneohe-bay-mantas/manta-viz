@@ -1,6 +1,7 @@
 // based on code from https://gist.github.com/endel/dfe6bb2fbe679781948c
 function getMoonPhase(year, month, day) {
     var c = e = jd = b = 0;
+    day++
     if (month < 3) {
         year--;
         month += 12;
@@ -11,13 +12,12 @@ function getMoonPhase(year, month, day) {
     jd = c + e + day - 694039.09; //jd is total days elapsed
     jd /= 29.5305882; //divide by the moon cycle
     b = parseInt(jd); //int(jd) -> b, take integer part of jd
-    jd -= b; //subtract integer part to leave fractional part of original jd
-    b = Math.round(jd * 29); //scale fraction from 0-28 and round
-    if (b >= 29) {
-        b = 0; //0 and 8 are the same so turn 8 into 0
-    }
+    jd -= b; //s""ubtract integer part to leave fractional part of original jd
 
+    b = Math.round((jd * 29.5) + 14.5); //scale fraction from 0-29 and round
+    b = b % 29
 
+    // 0 = new moon, but we are counting from full moon so add 14
     return b;
 }
 
@@ -103,7 +103,6 @@ var y = d3.scaleBand()
 // svg.append("g")
 //     .call(yAxis);
 
-
 //Read the data
 d3.csv("./data/calendar_data.csv", function (data) {
     console.log(data)
@@ -111,15 +110,25 @@ d3.csv("./data/calendar_data.csv", function (data) {
     //
     var corr_values = []
     for (i in lunar_days) {
-        if(i >= 20) {
-            if (i == 20) {
-                temp_avg = (parseFloat(data[19].Group_Size) + parseFloat(data[21].Group_Size)) / 2
+        day = lunar_days[i]
+        // this is only because we have no data for day 20 & 25 so we are averaging the days around them to fill data
+        if(day >= 20) {
+            if (day == 20) {
+                temp_avg = (parseFloat(data[19].Group_Size) + parseFloat(data[20].Group_Size)) / 2
                 corr_values.push(temp_avg)
+            } else if (day >= 25) {
+                if (day = 25) {
+                    temp_avg = (parseFloat(data[23].Group_Size) + parseFloat(data[24].Group_Size)) / 2
+                    corr_values.push(temp_avg)
+                } else {
+                    corr_values.push(parseFloat(data[day - 2].Group_Size))
+                }
             } else {
-                corr_values.push(parseFloat(data[i - 1].Group_Size))
+                corr_values.push(parseFloat(data[day - 1].Group_Size))
             }
         } else {
-            corr_values.push(parseFloat(data[i].Group_Size))
+            // once there is data for day 20, this is all we need.
+            corr_values.push(parseFloat(data[day].Group_Size))
         }
     }
     console.log(corr_values)
@@ -130,13 +139,27 @@ d3.csv("./data/calendar_data.csv", function (data) {
         var d = i % 7
         var w = Math.floor(i / 7)
         var v = corr_values[i]
+
+        //figure out moon stuff
+        if(lunar_days[i] == 15) {
+            //var m = "new moon"
+            var m = ""
+        } else if(lunar_days[i] == 0) {
+            var m = "full moon"
+        } else {
+            var m = ""
+        }
+        if (v > 8) {
+            var m = "try today!"
+        }
         
         data_coords.push({
             'day': d,
             'week': w,
             'value': v,
             'lunar_day': lunar_days[i],
-            'date': date_labels[i]
+            'date': date_labels[i],
+            'extra': m
         })
     }
     console.log(data_coords)
@@ -154,6 +177,7 @@ d3.csv("./data/calendar_data.csv", function (data) {
         .enter()
         .append("g")
     
+    // make calendar rectangles and color them
     block.append("rect")
         .attr("x", function (d) { return x(d.day) })
         .attr("y", function (d) { return y(d.week) })
@@ -161,11 +185,19 @@ d3.csv("./data/calendar_data.csv", function (data) {
         .attr("height", y.bandwidth())
         .style("fill", function (d) { return myColor(d.value) })
     
+    // add dates
     block.append("text")
         .attr("x", function (d) { return x(d.day) })
         .attr("y", function (d) { return y(d.week) })
         .text(function (d) { return d.date; })
         .attr("text-anchor", "end")
         .attr("transform", "translate(" + ((width / 7)-10) + ", " + 20 + ")");
+    
+    block.append("text")
+        .attr("x", function (d) { return x(d.day) })
+        .attr("y", function (d) { return y(d.week) })
+        .text(function (d) { return d.extra; })
+        .attr("text-anchor", "middle")
+        .attr("transform", "translate(" + ((width / 7) - (width / 14)) + ", " + (height / 4 -10) + ")");
 
 })
