@@ -10,6 +10,9 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
     }
     console.log(days)
 
+    var config = { displayModeBar: false}
+    
+
     var lunar_data = [
         {
             type: "scatterpolar",
@@ -78,7 +81,7 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
         },
         paper_bgcolor: "rgb(223, 223, 223)",
     }
-    Plotly.newPlot('lunar', lunar_data, lunar_layout);
+    Plotly.newPlot('lunar', lunar_data, lunar_layout, config);
 
     /////// Plot 2: tide data ///////////////////////////////
     var tidal_data = [
@@ -149,7 +152,7 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
         paper_bgcolor: "rgb(223, 223, 223)",
     }
 
-    Plotly.newPlot('tidal', tidal_data, tidal_layout);
+    Plotly.newPlot('tidal', tidal_data, tidal_layout, config);
 
 })
 
