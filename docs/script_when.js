@@ -11,7 +11,6 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
     console.log(days)
 
     var config = { displayModeBar: false}
-    
 
     var lunar_data = [
         {
@@ -29,9 +28,11 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
                 },
                 opacity: 0.7
             },
-            //cliponaxis: false,
-            hovertext: "test",
-            hovertemplate: "%{r} mantas, \n <extra>%{theta} days since the full moon</extra>"
+            text: days,
+            hovertext: {
+                size: '16pt'
+            },
+            hovertemplate: '<b>%{r} mantas</b> spotted, <br> <b>%{text}</b> days since the full moon<extra></extra>'
         }
     ]
 
@@ -100,10 +101,8 @@ Plotly.d3.csv('./data/polar_data.csv', function (err, rows) {
                 },
                 opacity: 0.7
             },
-            //cliponaxis: false,
             text: unpack(rows, 'date'),
-            //hovertext: "test",
-            hovertemplate: "%{r} mantas, /n <extra> %{text}"
+            hovertemplate: "<b>%{r} mantas</b> <br>spotted on %{text}<extra></extra>"
         }
     ]
 
