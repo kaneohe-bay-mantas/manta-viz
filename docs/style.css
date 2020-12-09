@@ -37,7 +37,7 @@ body #menu {
   margin-left: 1% !important;
   margin-right: 1% !important;
   width: 98%;
-  background: url('images/manta_background_new.jpg');
+  background: url('images/manta_background_dark.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -99,7 +99,7 @@ body #footer {
 
 
 body {
-  background: url('images/manta_background_new.jpg');
+  background: url('images/manta_background_dark.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
