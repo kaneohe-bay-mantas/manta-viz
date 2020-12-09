@@ -6,15 +6,16 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Acme&family=Asap:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Overpass:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
 
 :root{
-  --myFont: 'Roboto';
+  --myFont: 'Asap';
 }
 /*Opacity for the heat map*/
 .leaflet-heatmap-layer{
   opacity: .7;
 }
 
-body #fonts {
+body #font {
 font-family: var(--myFont), sans-serif;
+font-size: large;
 }
 
 body #white {
@@ -65,9 +66,9 @@ body #active-menu-text {
   color: #657886;
   padding-left: 2em;
   text-shadow: -1px 1px 2px    #b1c1ccab,
-				  1px 1px 2px   #b1c1ccab,
-				 1px -1px 0   #b1c1ccab;
-				-1px -1px 0   #b1c1ccab; 
+    1px 1px 2px   #b1c1ccab,
+		1px -1px 0   #b1c1ccab,
+		-1px -1px 0   #b1c1ccab; 
 }
 
 body #main-title {
@@ -81,9 +82,9 @@ body #page-title {
   font-size: xx-large;
   color: #4d5b66;
   text-shadow: -1px 1px 2px   #163e618f,
-				  1px 1px 2px   #163e618f,
-				 1px -1px 0   #163e618f;
-				-1px -1px 0   #163e618f; 
+		1px 1px 2px   #163e618f,
+		1px -1px 0   #163e618f,
+		-1px -1px 0   #163e618f; 
 }
 
 body #footer {
@@ -91,9 +92,9 @@ body #footer {
   font-size: medium;
   color:  #cbd5dd; 
   text-shadow: -1px 1px 2px   #163e618f,
-				  1px 1px 2px   #163e618f,
-				 1px -1px 0   #163e61;
-				-1px -1px 0   #163e61;
+		1px 1px 2px   #163e618f,
+		1px -1px 0   #163e61,
+		-1px -1px 0   #163e61;
 }
 
 
@@ -125,4 +126,10 @@ body {
 .ui.card {
   background-color: rgba(255,255,255,0.9);
   padding: 1em 2em;
+}
+
+.hovertext text {
+font-size: 16px !important; 
+font-family: ABeeZee, sans-serif;
+color: #4d5b66 !important; 
 }
