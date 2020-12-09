@@ -64,13 +64,18 @@ $(function () {
 });
 
 function showPic(id, mo, da, yr, lat, lon, time, gsize) {
-  str = '<div><img src = '
+  str = '<div><center><img src = '
   str += 'images/mantapics/' + id.toString() + '.jpg';
-  str += ' height="200"><hr>';
-  str += '<div>DATE: ' + mo + '/' + da + '/' + yr + '<br>';
-  str += 'Latitude: ' + lat + '<br>';
-  str += 'Longitude: ' + lon + '<br>';
-  str += 'Time: '
+  str += ' width=80%"></center><hr>';
+  str += '<table class="ui celled table"><tbody><tr><td>Date:</td>';
+  str += '<td>' + mo + '/' + da + '/' + yr + '</td></tr>';
+  str += '<tr><td>Latitude:</td>';
+  str += '<td>' + lat + '</td></tr>';
+
+  str += '<tr><td>Longitude:</td>';
+  str += '<td>' + lon + '</td></tr>';
+
+  str += '<tr><td>Time:</td><td>';
   time = Number(time)
   hour = Math.floor(time)
   min = Math.round(6000 * (time - hour)) / 100
@@ -78,8 +83,28 @@ function showPic(id, mo, da, yr, lat, lon, time, gsize) {
   if (min<10) {min = '0' + min.toString()}
   str += hour.toString() + ':' + min.toString()
   str += time > 12 ? 'PM' : 'AM';
-  str += '<br>Group Size: ' + gsize;
-  str += '</div>'
+  str += '</td></tr>';
+
+  str += '<tr><td>Group Size:</td>';
+  str += '<td>' + gsize + '</td></tr>';
+  str += '</tbody>';
+  str += '</table></div>';
+
+
+
+  // str += '<div>DATE: ' + mo + '/' + da + '/' + yr + '<br>';
+  // str += 'Latitude: ' + lat + '<br>';
+  // str += 'Longitude: ' + lon + '<br>';
+  // str += 'Time: '
+  // time = Number(time)
+  // hour = Math.floor(time)
+  // min = Math.round(6000 * (time - hour)) / 100
+  // if (hour > 12) { hour -= 12 };
+  // if (min<10) {min = '0' + min.toString()}
+  // str += hour.toString() + ':' + min.toString()
+  // str += time > 12 ? 'PM' : 'AM';
+  // str += '<br>Group Size: ' + gsize;
+  // str += '</div>'
 
   document.getElementById('show_pic').innerHTML = str;
 }
