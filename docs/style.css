@@ -114,6 +114,10 @@ body {
   color: #4d5b66;
 }
 
+.ui.header {
+  font-size: x-large;
+}
+
 .special {
 	color:#26669E;
 	font-weight:bold;
