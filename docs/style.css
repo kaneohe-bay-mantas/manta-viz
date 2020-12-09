@@ -21,10 +21,9 @@ body #white {
   font-family: var(--myFont), sans-serif;
   background-color: rgba(255,255,255,0.7);
   border-radius: 5px;
-  box-shadow: 0 0 15px 10px #141414;
+  box-shadow: 0 0 15px 10px #4d5b66;
   padding: 10px;
-  
-  color:black;
+  color:#4d5b66;
 }
 
 body #temp {
@@ -37,7 +36,7 @@ body #menu {
   margin-left: 1% !important;
   margin-right: 1% !important;
   width: 98%;
-  background: url('images/manta_background_new.jpg');
+  background: url('images/manta_background_dark.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
@@ -99,7 +98,7 @@ body #footer {
 
 
 body {
-  background: url('images/manta_background_new.jpg');
+  background: url('images/manta_background_dark.jpg');
   background-size: cover;
   background-attachment: fixed;
 }
