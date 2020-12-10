@@ -84,11 +84,6 @@ function showPic(id, mo, da, yr, lat, lon, time, gsize) {
   str += ' width=80%"></center><hr>';
   str += '<table class="ui celled table"><tbody><tr><td>Date:</td>';
   str += '<td>' + mo + '/' + da + '/' + yr + '</td></tr>';
-  str += '<tr><td>Latitude:</td>';
-  str += '<td>' + lat + '</td></tr>';
-
-  str += '<tr><td>Longitude:</td>';
-  str += '<td>' + lon + '</td></tr>';
 
   str += '<tr><td>Time:</td><td>';
   time = Number(time)
@@ -99,6 +94,14 @@ function showPic(id, mo, da, yr, lat, lon, time, gsize) {
   str += hour.toString() + ':' + min.toString()
   str += time > 12 ? 'PM' : 'AM';
   str += '</td></tr>';
+
+  str += '<tr><td>Latitude:</td>';
+  str += '<td>' + lat + '</td></tr>';
+
+  str += '<tr><td>Longitude:</td>';
+  str += '<td>' + lon + '</td></tr>';
+
+  
 
   str += '<tr><td>Group Size:</td>';
   str += '<td>' + gsize + '</td></tr>';
