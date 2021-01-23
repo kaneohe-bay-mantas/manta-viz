@@ -40,6 +40,8 @@ body #menu {
   background: url('images/manta_background_dark.jpg');
   background-size: cover;
   background-attachment: fixed;
+  box-shadow: none !important;
+  border: none !important;
 }
 body #logo {
   z-index: 9999;
@@ -53,18 +55,25 @@ body #font {
   color: black;
 }
 
+body #section-header {
+  font-family: var(--myFont), sans-serif;
+  color:#26669E; 
+  font-weight: 600;
+  font-size: x-large;
+}
+
 body #menu-text {
   font-family: 'Acme', sans-serif;
   font-size: x-large;
   color: #163e61;
-  padding-left: 2em; 
+  padding: 1em 2em; 
 }
 
 body #active-menu-text {
   font-family: 'Acme', sans-serif;
   font-size: x-large;
   color: #657886;
-  padding-left: 2em;
+  padding: 1em 2em;
   text-shadow: -1px 1px 2px    #b1c1ccab,
     1px 1px 2px   #b1c1ccab,
 		1px -1px 0   #b1c1ccab,
@@ -136,4 +145,17 @@ body {
 font-size: 16px !important; 
 font-family: ABeeZee, sans-serif;
 color: #4d5b66 !important; 
+}
+
+div.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: 60px;					
+    height: 28px;					
+    padding: 2px;				
+    font: 12px sans-serif;		
+    background: lightsteelblue;	
+    border: 0px;		
+    border-radius: 8px;			
+    pointer-events: none;			
 }

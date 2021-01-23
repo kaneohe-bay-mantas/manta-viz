@@ -156,7 +156,7 @@ d3.csv("./data/calendar_data.csv", function (data) {
         data_coords.push({
             'day': d,
             'week': w,
-            'value': v,
+            'value': Math.round(v, 1),
             'lunar_day': lunar_days[i],
             'date': date_labels[i],
             'extra': m
@@ -172,32 +172,71 @@ d3.csv("./data/calendar_data.csv", function (data) {
         .range(["white", "#69b3a2"])
         .domain([0, data_max])
 
-    var block = svg.selectAll("g")
+    var calendar = svg.selectAll("g")
         .data(data_coords, function (d) { return d })
         .enter()
         .append("g")
+
+    //tooltip
+    var div = d3.select("body").append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
     
     // make calendar rectangles and color them
-    block.append("rect")
+    calendar.append("rect")
         .attr("x", function (d) { return x(d.day) })
         .attr("y", function (d) { return y(d.week) })
         .attr("width", x.bandwidth())
         .attr("height", y.bandwidth())
         .style("fill", function (d) { return myColor(d.value) })
+        .on("mouseover", function (d) {
+            div.transition()
+                .duration(200)
+                .style("opacity", .9);
+            div.html("test")
+                .style("left", "50px")
+                .style("top", "50px");
+        })
+        .on("mouseout", function (d) {
+            div.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
     
     // add dates
-    block.append("text")
+    calendar.append("text")
         .attr("x", function (d) { return x(d.day) })
         .attr("y", function (d) { return y(d.week) })
         .text(function (d) { return d.date; })
         .attr("text-anchor", "end")
         .attr("transform", "translate(" + ((width / 7)-10) + ", " + 20 + ")");
     
-    block.append("text")
+    calendar.append("text")
         .attr("x", function (d) { return x(d.day) })
         .attr("y", function (d) { return y(d.week) })
         .text(function (d) { return d.extra; })
         .attr("text-anchor", "middle")
         .attr("transform", "translate(" + ((width / 7) - (width / 14)) + ", " + (height / 4 -10) + ")");
 
+    
+
+    // calendar.selectAll("rect")
+    //     .data(data_coords)
+        
+    //     .on("mouseover", function (d) {
+    //         div.transition()
+    //             .duration(200)
+    //             .style("opacity", .9);
+    //         div.html("test")
+    //             .style("left", "50px")
+    //             .style("top", "50px");
+    //     })
+    //     .on("mouseout", function (d) {
+    //         div.transition()
+    //             .duration(500)
+    //             .style("opacity", 0);
+    //     });
 })
+
+
+// d.lunar_day + "days after the full moon<br/>" + d.value + " mantas seen on average"
