@@ -55,6 +55,13 @@ body #font {
   color: black;
 }
 
+body #section-header {
+  font-family: var(--myFont), sans-serif;
+  color:#26669E; 
+  font-weight: 600;
+  font-size: x-large;
+}
+
 body #menu-text {
   font-family: 'Acme', sans-serif;
   font-size: x-large;
