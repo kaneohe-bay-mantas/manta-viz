@@ -40,6 +40,8 @@ body #menu {
   background: url('images/manta_background_dark.jpg');
   background-size: cover;
   background-attachment: fixed;
+  box-shadow: none !important;
+  border: none !important;
 }
 body #logo {
   z-index: 9999;
@@ -57,14 +59,14 @@ body #menu-text {
   font-family: 'Acme', sans-serif;
   font-size: x-large;
   color: #163e61;
-  padding-left: 2em; 
+  padding: 1em 2em; 
 }
 
 body #active-menu-text {
   font-family: 'Acme', sans-serif;
   font-size: x-large;
   color: #657886;
-  padding-left: 2em;
+  padding: 1em 2em;
   text-shadow: -1px 1px 2px    #b1c1ccab,
     1px 1px 2px   #b1c1ccab,
 		1px -1px 0   #b1c1ccab,
